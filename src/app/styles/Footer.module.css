@@ -1,0 +1,49 @@
+.footer {
+  width: 100%;
+  height: 10vh;
+  padding: 1rem 0;
+  margin-bottom: -5rem;
+  background-color: rgba(128, 128, 128, 0.158);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.footercontainer {
+  margin: auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  /* Removido position: absolute; e bottom: 0; */
+}
+
+@media (zoom: 1.5) { /* Exemplo de media query para zoom */
+  .footer {
+    position: fixed; /* Ou outra solução específica para zoom alto */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    height: auto; /* Altura automática para adaptar ao conteúdo */
+    padding: 2rem; /* Aumenta o padding para melhorar a legibilidade */
+    bottom: 0;
+    margin-bottom: -25rem;
+  }
+
+  .footercontainer {
+    flex-direction: column; /* Organiza os itens verticalmente */
+    text-align: center; /* Centraliza o texto */
+    gap: 20px; /* Reduz o espaço entre os itens para economizar espaço */
+    bottom: 0;
+  }
+}

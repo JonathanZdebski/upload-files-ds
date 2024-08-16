@@ -1,0 +1,155 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 5rem;
+  }
+  
+  .container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
+  }
+  
+  .container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+   
+  }
+
+  .form {
+    gap: 10px;
+    font-size: 1.3rem;
+    height: 50vh;
+  }
+  
+  .label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .containerquadrado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+    gap: 20px;
+    width: 100vw;
+    height: 50px;
+    place-items: center;
+    margin-top: 10rem;
+    padding-right: 5rem;
+
+  }
+  
+  .quadradointerno, .quadradotwo, .quadradothree {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+
+  .pa {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    font-size: 18px;
+    /* Removido position: absolute; e top/left ajustes */
+  }
+
+  .container input {
+   border-radius: 8px;
+  }
+
+  .container textarea {
+    border-radius: 8px;
+  }
+
+  
+  @media (max-width: 1280px) {
+    .form {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte */
+        height: auto; /* Altera a altura para automática */
+        margin-bottom: -5rem;
+    }
+
+    .container {
+        padding: 15px; /* Reduz o preenchimento */
+    }
+
+    .container h1 {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+    }
+
+    .form {
+        gap: 7px; /* Reduz o espaço entre os itens dentro do formulário */
+    }
+
+    .label {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte das labels */
+    }
+
+    .containerquadrado {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
+        gap: 5px; /* Reduz o espaçamento entre as colunas */
+    }
+
+    .quadradointerno, .quadradotwo, .quadradothree {
+        width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
+    }
+
+    .pa {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+}
+
+@media (max-width: 600px) {
+  .form {
+    width: 130%; /* Define a largura do formulário para 50% da largura do contêiner pai */
+    font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    align-items: center;
+   justify-items: center;
+   margin-left: 1rem;
+}
+  .container {
+      padding: 15 px; /* Reduz o preenchimento */
+  }
+
+  .container h1 {
+      font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+      align-items: center;
+      justify-content: center ;
+      margin-left: 6rem;
+  }
+
+  .container input{
+    max-width: 70%;
+  }
+
+  .container textarea {
+    width: 80%; /* O textarea ocupará 80% da largura do contêiner */
+    max-width: 350px; /* Garante que o textarea não ultrapasse 300px */
+  }
+
+  .form {
+      gap: 7px; /* Reduz o espaço entre os itens dentro do formulário */
+  }
+
+  .label {
+      font-size: 0.85rem; /* Reduz o tamanho da fonte das labels */
+  }
+
+  .containerquadrado {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
+      gap: 15px; /* Reduz o espaçamento entre as colunas */
+  }
+
+  .quadradointerno, .quadradotwo, .quadradothree {
+      width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
+  }
+
+  .pa {
+      font-size: 16px; /* Reduz o tamanho da fonte */
+  }
+}

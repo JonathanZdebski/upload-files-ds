@@ -1,0 +1,150 @@
+.container {
+  margin-bottom: 20rem;
+}
+
+.containerquadrado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+    gap: 20px;
+    width: 100vw;
+    height: 50px;
+    place-items: center;
+    margin-top: 10rem;
+    padding-right: 5rem;
+  }
+  
+  .quadradointerno, .quadradotwo, .quadradothree {
+    width: 50%;
+    display: flex;
+   flex-direction: column; /* Isso garante que os itens sejam dispostos verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+  }
+  
+.contentp{
+  border-radius: 20px;
+  padding: 1rem;
+  background-color: rgba(240, 248, 255, 0.014);
+
+}
+
+  .pa {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    font-size: 18px;
+    /* Removido position: absolute; e top/left ajustes */
+  }
+
+  .contactinfo{
+    font-size: 1rem;
+    margin-left: -20rem;
+    margin-right: 20rem;
+  }
+
+  
+  .title {
+    font-size: 1.8rem;
+    margin-left: 10rem;
+  margin-bottom: -6rem;
+  }
+
+  .containertitle{
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .quadradointerno p {
+    margin: 10px 0;
+   text-align: center;
+  }
+  
+  @media (max-width: 1280px) {
+    .containerquadrado {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
+        gap: 120px; /* Reduz o espaçamento entre as colunas */
+        margin-bottom: 60rem;
+        margin-left: 5rem;
+
+    }
+
+    .quadradointerno, .quadradotwo {
+        width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
+    }
+
+    .quadradothree {
+      grid-column: span 3; /* Faz com que o terceiro quadrado ocupe três colunas */
+      height: auto; /* Ajusta a altura automaticamente */
+      margin-left: 0; /* Remove o margem à esquerda, movendo o elemento para o lado esquerdo */
+      grid-column-start: 1; /* Posiciona o elemento no início da linha */
+  }
+
+    .pa {
+        font-size: 16px; /* Diminui o tamanho da fonte */
+    }
+
+    .contactinfo {
+        margin-left: -10rem; /* Ajusta os márgens */
+        margin-right: 15rem;
+    }
+
+    .contentp {
+      width: 300px;
+      margin-right: 10rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+  @media (max-width: 480px) {
+    .container {
+      width: 100%;
+      margin-top: 10rem;
+      align-items: center;
+      justify-content: center;
+      margin-left: -5rem; /* Reduz a margem esquerda para economizar espaço */
+      margin-bottom: -35rem;
+    }
+  
+    .containerquadrado {
+      grid-template-columns: 1fr; /* Mantém uma única coluna em telas menores */
+      height: auto; /* Ajusta a altura automaticamente */
+      margin-top: 1rem; /* Reduz a margem superior para uma distância mais razoável */
+      padding-right: 0.5rem; /* Reduz o padding direito para economizar espaço */
+
+    }
+  
+    .quadradointerno, .quadradoone, .quadradotwo, .quadradothree {
+      width: 100%; /* Torna os quadrados de largura total */
+      margin-top: -2rem; /* Reduz a margem superior para uma distância mais razoável */
+      margin-bottom: 0; /* Normaliza a margem inferior */
+      margin-right: 8rem; /* Remove a margem direita para economizar espaço */
+      
+    }
+  
+.quadradoone{
+  margin-right: -10rem;
+  }
+
+    .pa, .contactinfo {
+      font-size: 14px; /* Reduz o tamanho da fonte para uma versão mais leve */
+    }
+  
+    .title {
+      font-size: 1.4rem; /* Reduz o tamanho da fonte para uma versão mais leve */
+      margin-top: 1rem; /* Reduz a margem superior para uma distância mais razoável */
+      margin-left: 0; /* Remove a margem esquerda para economizar espaço */
+      margin-bottom: 0; /* Normaliza a margem inferior */
+    }
+  
+    .contentp {
+      border-radius: 10px; /* Reduz o raio do borda para uma versão mais leve */
+      padding: 0.5rem; /* Reduz o padding para economizar espaço */
+      background-color: rgba(240, 248, 255, 0.01); /* Ajusta a transparência para uma versão mais leve */
+    }
+  }
+  
+}
+
+

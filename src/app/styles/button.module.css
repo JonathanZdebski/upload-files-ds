@@ -1,0 +1,276 @@
+.button {
+  --glow-color: rgb(150, 204, 255);
+  --glow-spread-color: rgb(0, 100, 146);
+  --enhanced-glow-color: rgb(88, 202, 255);
+  --btn-color: rgb(0, 79, 110);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  margin-top: 10px;
+  }
+
+.button::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+.button:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+.button:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+
+
+.buttonOne {
+  padding: 12px 26px;
+  border: 0;
+  font-size: 16px;
+  transition: all 150ms ease-in-out;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #fff;
+  background-color: transparent;
+  background-image: radial-gradient(50% 115% at 50% -5%, rgba(255, 255, 255, 0.11) 0%, transparent 100%);
+  box-shadow: inset 0 0px 10px 0px rgba(255, 255, 255, 0.14), inset 0px 5px 10px 0px rgba(255, 255, 255, 0.11), inset 0px 2px 5px 0px rgba(255, 255, 255, 0.4), inset 0px 3px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buttonOne:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.buttonOne:active {
+  transform: scale(.95);
+}
+
+.buttonTwo {
+  margin-top: 10px;
+  padding: 0.6em 2em;
+  border: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  transition: 0.3s ease-in-out;
+  
+}
+
+.buttonTwo::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Posiciona a linha na parte inferior do botão */
+  left: 0; /* Começa a linha do lado esquerdo do botão */
+  width: 0%; /* Inicialmente, a linha tem largura 0% */
+  height: 2px; /* Altura da linha */
+  background: white; /* Cor da linha */
+  transform-origin: left; /* Origem da transformação é o lado esquerdo */
+  transition: width 0.3s ease-in-out; /* Animação da largura da linha */
+}
+
+.buttonTwo:hover::after {
+  width: 100%; /* Finaliza a animação com a linha ocupando toda a largura */
+}
+
+.marginbtn{
+text-align: center;
+ justify-content: center;
+}
+
+.buttonThree {
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.buttonThree:focus {
+  color: #171e29;
+}
+
+.buttonThree:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.buttonThree:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.mbcontent{
+  margin-bottom: 20rem;
+}
+
+.share{
+ margin-top: -1.5rem;
+}
+
+.titleContainer{
+  margin-bottom: 2rem;
+}
+
+.titleContainerOne {
+  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
+  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+
+}
+
+.linkWrapper {
+  display: inline-flex; /* Usa flexbox para alinhar itens horizontalmente */
+  align-items: center; /* Centraliza verticalmente os itens */
+  cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
+}
+
+.textWrapper {
+  display: flex; /* Usa flexbox para alinhar a imagem e o texto lado a lado */
+  align-items: center; /* Centraliza verticalmente a imagem e o texto */
+  margin-right: 8px; /* Espaço entre a imagem e o texto */
+}
+
+
+.titleContainerOne:hover{
+  background-color: rgba(240, 248, 255, 0.103);
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+
+.titleContainerTwo {
+  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
+  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+  margin-left: 2rem;
+}
+
+.titleContainerTwo:hover{
+  background-color: rgba(240, 248, 255, 0.103);
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.titleContainerThree {
+  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
+  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+  margin-left: 2rem;
+}
+
+.titleContainerThree:hover{
+  background-color: rgba(240, 248, 255, 0.103);
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+/* Login.module.css */
+
+.containerlogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  gap: 10px; /* Espaçamento entre o input e o botão */
+}
+
+.containerlogin h1 {
+ font-size: 1.3rem;
+ margin-bottom: 2rem;
+}
+
+.inputField {
+  padding: 10px;
+  border-radius: 8px;
+  border: 3px solid #ddd;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #171e29;
+}
+
+.inputField:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+@media (max-width: 768px) { /* Ajuste esta largura conforme necessário */
+
+  .titleContainerOne,
+  .titleContainerTwo,
+  .titleContainerThree {
+    display: block; /* Faz com que cada container ocupe toda a largura disponível */
+    padding: 3px; /* Reduz o padding para telas menores */
+    margin-bottom: 1rem; /* Adiciona uma margem inferior para separar os containers */
+    text-align: center;
+  }
+
+  .titleContainerTwo,
+  .titleContainerThree {
+    margin-left: 0; /* Remove a margem à esquerda para telas menores */
+    text-align: center;
+  }
+
+  .titleContainerOne:hover,
+  .titleContainerTwo:hover,
+  .titleContainerThree:hover {
+    background-color: rgba(240, 248, 255, 0.15); /* Ajusta a opacidade para telas menores */
+  }
+}

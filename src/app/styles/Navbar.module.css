@@ -1,0 +1,80 @@
+/* components/Navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço igualmente entre os itens */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px;
+    background-color: #ffffff00;
+    color: #fff;
+    width: 100%; /* Garante que o navbar ocupe toda a largura disponível */
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50px; /* Ajuste conforme o tamanho do seu logo */
+    margin-right: 15px;
+    margin-left: 1rem;
+  }
+  
+  .menu {
+    list-style-type: none;
+    display: flex;
+    margin-right: 3rem;
+  }
+  
+  .menu li {
+    margin-left: 20px;
+    position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
+    overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  }
+  
+  .menu li::before {
+    content: ""; /* Conteúdo vazio para criar um pseudo-elemento */
+    position: absolute; /* Posicionamento absoluto para controlar a linha */
+    bottom: 0; /* Posição da linha no final inferior do item */
+    left: -100%; /* Começa fora da tela à esquerda */
+    width: 100%; /* Largura total do item */
+    height: 2px; /* Altura da linha */
+    background: white; /* Cor da linha */
+    transform-origin: right; /* Origem da transformação é o lado direito */
+    transition: left 0.2s ease-in-out; /* Animação da posição da linha */
+  }
+  
+  .menu li:hover::before {
+    left: 0; /* Move a linha para a frente, mostrando a expansão */
+  }
+  
+  
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .menu a:hover {
+    color: #ddd;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Muda a direção do flex para coluna */
+    }
+
+    .menu {
+        margin-right: 0; /* Remove a margem direita */
+        flex-direction: row; /* Muda a direção do menu para coluna */
+    }
+
+    .menu li {
+        margin-top: 10px; /* Adiciona margem superior para separar os itens */
+    }
+
+    .menu li::before {
+        top: 0; /* Muda a posição da linha para o topo */
+        bottom: auto; /* Remove a posição do fundo */
+        transform-origin: top; /* Origem da transformação é o topo */
+    }
+}

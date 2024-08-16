@@ -1,0 +1,14 @@
+/* Styles.module.css */
+
+.Conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Ajuste conforme necessário */
+    margin-left: 22rem;
+  }
+  
+  .SecondConteiner {
+    /* Estilos específicos para SecondConteiner */
+  }
+  
