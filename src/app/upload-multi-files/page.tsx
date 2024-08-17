@@ -11,6 +11,15 @@ import UploadOptions from "../Components/UploadOptions";
 import styles from "../styles/button.module.css";
 import Sharesm from "../Components/sharesm";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const path = require("path");
+
+// Importação e configuração do dotenv-safe
+require("dotenv-safe").config({
+  example: path.join(__dirname, "../.env"),
+});
 
 export default function Page() {
   const [password, setPassword] = useState("");
@@ -20,9 +29,9 @@ export default function Page() {
     const expectedPassword = process.env.NEXT_PUBLIC_PASSWORD;
     if (password === expectedPassword) {
       setIsLoggedIn(true);
-      alert("Access granted!");
+      toast.success("Access granted!");
     } else {
-      alert("Incorrect password!");
+      toast.error("Incorrect password!");
     }
   };
 
@@ -80,6 +89,17 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center m-6 gap-2">
       <UploadOptions />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {!isLoggedIn ? (
         <div className={styles.containerlogin}>
           <h1>Multi-File Login Access</h1>
