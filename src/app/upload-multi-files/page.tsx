@@ -82,6 +82,16 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center m-6 gap-2">
       <UploadOptions />
+      <div>
+        <h1 style={{ fontSize: "20px" }}>
+          Upload Multi Files (IMG, PDF, Documents, Videos)
+        </h1>
+
+        <p style={{ textAlign: "center" }}>
+          Your files are permanently saved in the cloud.
+        </p>
+        <br />
+      </div>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -114,15 +124,6 @@ export default function Page() {
         </div>
       ) : (
         <>
-          <div>
-            <h1 style={{ fontSize: "20px" }}>
-              Upload Multi Files (IMG, PDF, Documents)
-            </h1>
-
-            <p style={{ textAlign: "center" }}>Max size is 2 MB per file.</p>
-            <br />
-          </div>
-
           <MultiFileDropzone
             value={fileStates}
             onChange={(files) => {

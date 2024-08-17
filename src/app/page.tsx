@@ -8,15 +8,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Sharesm from "./Components/sharesm";
 import Content from "./Components/Content";
 import UploadOptions from "./Components/UploadOptions";
-
 import Link from "next/link";
-
-const path = require("path");
-
-// Importação e configuração do dotenv-safe
-require("dotenv-safe").config({
-  example: path.join(__dirname, "../.env"),
-});
 
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -40,6 +32,12 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center m-6 gap-2">
       <UploadOptions />
+      <div>
+        <h1 style={{ fontSize: "20px" }}>Upload One Image at a Time</h1>
+
+        <p style={{ textAlign: "center" }}>Max size is 2 MB per file.</p>
+        <br />
+      </div>
       <SingleImageDropzone
         width={200}
         height={200}
