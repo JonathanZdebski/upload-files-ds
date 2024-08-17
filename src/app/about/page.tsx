@@ -18,6 +18,7 @@ const page = () => {
             width={200}
             height={200}
             alt="Picture of security"
+            style={{ marginLeft: "20rem" }}
           />
 
           <p>

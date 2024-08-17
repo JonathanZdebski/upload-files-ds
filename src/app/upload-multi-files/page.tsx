@@ -9,6 +9,7 @@ import Content from "../Components/Content";
 import Link from "next/link";
 import UploadOptions from "../Components/UploadOptions";
 import styles from "../styles/button.module.css";
+import Sharesm from "../Components/sharesm";
 import { useState, useEffect } from "react";
 
 export default function Page() {
@@ -183,6 +184,10 @@ export default function Page() {
               </button>
             </div>
           )}
+          <Sharesm />
+          <div className={styles.share}>
+            <p>Fast link compartment</p>
+          </div>
         </>
       )}
       <div className={styles.mbcontent}>

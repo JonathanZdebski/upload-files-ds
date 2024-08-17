@@ -11,7 +11,8 @@ const contactinfo = () => {
             src="/chat.png"
             width={150}
             height={150}
-            alt="Picture of security"
+            alt="Picture of Contact"
+            style={{ marginLeft: "20rem" }}
           />
         </div>
         <div>

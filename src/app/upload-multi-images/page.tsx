@@ -10,6 +10,7 @@ import Link from "next/link";
 import UploadOptions from "../Components/UploadOptions";
 import styles from "../styles/button.module.css";
 import { useState, useEffect } from "react";
+import Sharesm from "../Components/sharesm";
 
 export default function Page() {
   const [password, setPassword] = useState("");
@@ -159,6 +160,10 @@ export default function Page() {
             </button>
           </div>
         )}
+        <Sharesm />
+        <div className={styles.share}>
+          <p>Fast link compartment</p>
+        </div>
       </>
 
       <div className={styles.mbcontent}>

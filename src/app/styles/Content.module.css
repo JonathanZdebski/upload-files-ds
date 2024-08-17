@@ -1,29 +1,36 @@
 .container {
   margin-bottom: 20rem;
+  width: 100%;
+  margin-left: -10rem;
 }
 
 .containerquadrado {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-    gap: 20px;
-    width: 100vw;
-    height: 50px;
-    place-items: center;
-    margin-top: 10rem;
-    padding-right: 5rem;
-  }
-  
-  .quadradointerno, .quadradotwo, .quadradothree {
-    width: 50%;
-    display: flex;
-   flex-direction: column; /* Isso garante que os itens sejam dispostos verticalmente */
-    align-items: center; /* Centraliza os itens horizontalmente */
-  }
-  
-.contentp{
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens se ajustem em várias linhas */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px;
+  padding: 0 5rem; /* Ajusta o padding para dispositivos maiores */
+  box-sizing: border-box; /* Garante que padding e bordas sejam incluídos na largura total */
+  margin-top: 10rem;
+  max-width: 100%;
+}
+
+.quadradoone, .quadradotwo, .quadradothree {
+  flex-basis: calc(33.333% - 20px); /* Ajusta a base flexível para 3 colunas, subtraindo o gap */
+  max-width: calc(33.333% - 20px); /* Limita a largura máxima para evitar que fiquem muito grandes */
+  display: flex;
+  flex-direction: column; /* Disposição vertical dos itens internos */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  margin-bottom: 20px; /* Espaçamento entre os quadrados */
+
+}
+
+.contentp {
   border-radius: 20px;
   padding: 1rem;
   background-color: rgba(240, 248, 255, 0.014);
+  margin-left: -5rem; /* Adiciona espaço à esquerda do texto */
+  max-width: 50%;
 
 }
 
@@ -34,97 +41,85 @@
     /* Removido position: absolute; e top/left ajustes */
   }
 
-  .contactinfo{
+  .contactinfo {
+    display: flex;
+    flex-wrap: wrap;
     font-size: 1rem;
-    margin-left: -20rem;
-    margin-right: 20rem;
+    width: 80%;
+    margin-left: 20rem;
+    background-color: rgba(240, 248, 255, 0.021);
+    padding: 15px;
+    border-radius: 15px;
   }
-
   
   .title {
     font-size: 1.8rem;
-    margin-left: 10rem;
-  margin-bottom: -6rem;
+    margin-left: 20rem;
+    margin-bottom: -5rem;
+    width: 100%;
+    text-align: center;
   }
+  
+  .quadradointerno p {
+    margin: 10px 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10rem;
+    width: 100%;
 
-  .containertitle{
+  }
+  
+  
+  
+    .containertitle{
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
     margin-top: 2rem;
+
+  }
+
+@media (max-width: 768px) {
+
+  .container{
+    margin-bottom: 20rem;
+    margin-left: 0;
+  }
+
+  .containerquadrado {
+    padding: 0 2rem; /* Reduz o padding lateral para dispositivos menores */
+  }
+
+  .quadradoone, .quadradotwo, .quadradothree {
+    width: 100%; /* Remove o limite máximo de largura */
+
+  }
+
+  .contentp {
+    max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
+    margin-left: 0; /* Remove o espaço à esquerda do texto */
+
   }
 
   .quadradointerno p {
-    margin: 10px 0;
-   text-align: center;
-  }
-  
-  @media (max-width: 1280px) {
-    .containerquadrado {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
-        gap: 120px; /* Reduz o espaçamento entre as colunas */
-        margin-bottom: 60rem;
-        margin-left: 5rem;
-
-    }
-
-    .quadradointerno, .quadradotwo {
-        width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
-    }
-
-    .quadradothree {
-      grid-column: span 3; /* Faz com que o terceiro quadrado ocupe três colunas */
-      height: auto; /* Ajusta a altura automaticamente */
-      margin-left: 0; /* Remove o margem à esquerda, movendo o elemento para o lado esquerdo */
-      grid-column-start: 1; /* Posiciona o elemento no início da linha */
+    width: 65%;
   }
 
-    .pa {
-        font-size: 16px; /* Diminui o tamanho da fonte */
-    }
 
-    .contactinfo {
-        margin-left: -10rem; /* Ajusta os márgens */
-        margin-right: 15rem;
-    }
+  .pa, .contactinfo {
+    font-size: 16px; /* Ajusta o tamanho da fonte para melhor legibilidade */
+    margin-left: 2rem;
+  }
 
-    .contentp {
-      width: 300px;
-      margin-right: 10rem;
-    }
+  .quadradointerno Img {
+    margin-right: 32rem;
 
-}
-
-@media (max-width: 480px) {
-
-  @media (max-width: 480px) {
-    .container {
-      width: 100%;
-      margin-top: 10rem;
-      align-items: center;
-      justify-content: center;
-      margin-left: -5rem; /* Reduz a margem esquerda para economizar espaço */
-      margin-bottom: -35rem;
-    }
-  
-    .containerquadrado {
-      grid-template-columns: 1fr; /* Mantém uma única coluna em telas menores */
-      height: auto; /* Ajusta a altura automaticamente */
-      margin-top: 1rem; /* Reduz a margem superior para uma distância mais razoável */
-      padding-right: 0.5rem; /* Reduz o padding direito para economizar espaço */
-
-    }
-  
-    .quadradointerno, .quadradoone, .quadradotwo, .quadradothree {
-      width: 100%; /* Torna os quadrados de largura total */
-      margin-top: -2rem; /* Reduz a margem superior para uma distância mais razoável */
-      margin-bottom: 0; /* Normaliza a margem inferior */
-      margin-right: 8rem; /* Remove a margem direita para economizar espaço */
-      
-    }
+  }
   
 .quadradoone{
-  margin-right: -10rem;
+  align-items: center;
+
   }
 
     .pa, .contactinfo {
@@ -145,6 +140,6 @@
     }
   }
   
-}
+
 
 

@@ -157,7 +157,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                   type="button"
                   disabled={disabled}
                 >
-                  select
+                  Select
                 </Button>
               </div>
             </div>

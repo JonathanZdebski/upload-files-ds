@@ -9,8 +9,8 @@ const Content = () => {
         <div className={styles.quadradoone}>
           <Image
             src="/cyber-security.png"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             alt="Picture of security"
           />
         </div>
@@ -28,8 +28,8 @@ const Content = () => {
         <div className={styles.quadradotwo}>
           <Image
             src="/documentation.png"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             alt="Picture of security"
           />
         </div>
@@ -46,8 +46,8 @@ const Content = () => {
         <div className={styles.quadradothree}>
           <Image
             src="/data-security.png"
-            width={150}
-            height={150}
+            width={120}
+            height={120}
             alt="Picture of security"
           />
         </div>

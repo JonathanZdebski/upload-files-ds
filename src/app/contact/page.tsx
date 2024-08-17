@@ -46,19 +46,16 @@ const FormComponent: React.FC = () => {
     );
 
     if (isFormFilled) {
-      toast.success("Seu e-mail foi enviado com sucesso!", {
+      toast.success("Your e-mail was sent successfully!", {
         position: "top-right", // Correção: Usar string diretamente
       });
       setTimeout(() => {
         window.location.reload();
       }, 6000);
     } else {
-      toast.error(
-        "Por favor, preencha todos os campos antes de enviar o e-mail.",
-        {
-          position: "top-center", // Correção: Usar string diretamente
-        }
-      );
+      toast.error("Please fill out all fields before sending the email.", {
+        position: "top-center", // Correção: Usar string diretamente
+      });
     }
   };
 
@@ -70,7 +67,7 @@ const FormComponent: React.FC = () => {
             <strong>CONTACT US</strong>
           </h1>
           <form ref={form} onSubmit={sendEmail}>
-            <label htmlFor="user_name">Nome</label>
+            <label htmlFor="user_name">Name</label>
             <br />
             <input
               type="text"
@@ -91,7 +88,7 @@ const FormComponent: React.FC = () => {
               style={{ width: "500px", height: "35px", color: "black" }}
             />
             <br />
-            <label htmlFor="subject">Assunto</label>
+            <label htmlFor="subject">Subject</label>
             <br />
             <input
               type="text"
@@ -101,7 +98,7 @@ const FormComponent: React.FC = () => {
               style={{ width: "500px", height: "35px", color: "black" }}
             />
             <br />
-            <label htmlFor="message">Mensagem</label>
+            <label htmlFor="message">Message</label>
             <br />
             <textarea
               id="message"
@@ -112,7 +109,7 @@ const FormComponent: React.FC = () => {
             ></textarea>
             <br />
             <button type="submit" onClick={handleSendMessage} className="btn">
-              Enviar
+              Send Message
             </button>
             <ToastContainer />
           </form>
