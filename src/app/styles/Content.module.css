@@ -22,7 +22,7 @@
   flex-direction: column; /* Disposição vertical dos itens internos */
   align-items: center; /* Centraliza os itens horizontalmente */
   margin-bottom: 20px; /* Espaçamento entre os quadrados */
-
+  margin-top: 1.3rem;
 }
 
 .contentp {
@@ -31,7 +31,6 @@
   background-color: rgba(240, 248, 255, 0.014);
   margin-left: -5rem; /* Adiciona espaço à esquerda do texto */
   max-width: 50%;
-
 }
 
   .pa {
@@ -69,8 +68,7 @@
     width: 100%;
 
   }
-  
-  
+
   
     .containertitle{
     display: flex;
@@ -85,6 +83,7 @@
   .container{
     margin-bottom: 20rem;
     margin-left: 0;
+    
   }
 
   .containerquadrado {
@@ -99,6 +98,7 @@
   .contentp {
     max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
     margin-left: 0; /* Remove o espaço à esquerda do texto */
+    background-color: aliceblue;
 
   }
 

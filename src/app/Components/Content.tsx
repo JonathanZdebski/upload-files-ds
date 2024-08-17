@@ -8,6 +8,24 @@ const Content = () => {
       <div className={styles.containerquadrado}>
         <div className={styles.quadradoone}>
           <Image
+            src="/file-lock.png"
+            width={120}
+            height={120}
+            alt="Picture of premium"
+          />
+        </div>
+        <div className={styles.contentp}>
+          <p>
+            <strong>Exclusive Cloud Benefits.</strong> <br />
+            <br />
+            You can share multiple files, images, PDFs, documents, and videos.
+            The easy, fast, and secure way to send your files around the world
+            without needing an account. Share your files, photos, and videos
+            right now.
+          </p>
+        </div>
+        <div className={styles.quadradoone}>
+          <Image
             src="/cyber-security.png"
             width={120}
             height={120}
@@ -24,7 +42,6 @@ const Content = () => {
             Files DS and servers, all transmissions are encrypted using SSL/TLS.
           </p>
         </div>
-
         <div className={styles.quadradotwo}>
           <Image
             src="/documentation.png"

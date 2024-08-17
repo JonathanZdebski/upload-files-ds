@@ -138,7 +138,7 @@ export default function Page() {
                 })
               );
             } else {
-              alert("Limite de 5 arquivos alcançado.");
+              alert("File limit reached: 5 files.");
             }
           }}
         />

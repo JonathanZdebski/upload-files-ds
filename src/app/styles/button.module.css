@@ -34,6 +34,7 @@
   transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
 }
 
+
 .button:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
@@ -256,6 +257,7 @@ text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 80%;
 }
 
   .titleContainerOne,
@@ -265,6 +267,7 @@ text-align: center;
     padding: 3px;
     margin-bottom: 1rem;
     text-align: center;
+   
   }
   
   .titleContainerTwo,

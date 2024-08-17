@@ -13,7 +13,6 @@ import Sharesm from "../Components/sharesm";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import PageTitle from "../Components/PageTitle";
-import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Page() {
@@ -89,7 +88,7 @@ export default function Page() {
       <UploadOptions />
       <div>
         <h1 style={{ fontSize: "20px" }}>
-          Upload Multi Files (IMG, PDF, Documents, Videos)
+          Upload Multi Files (IMG, PDFs, Documents, Videos)
         </h1>
 
         <p style={{ textAlign: "center" }}>
@@ -126,6 +125,13 @@ export default function Page() {
           <button onClick={handleLogin} className={styles.button}>
             Login
           </button>
+          <Link
+            href="https://buy.stripe.com/00gbMJ1HF3dT4KYfYZ"
+            passHref
+            target="_blank"
+          >
+            <button className={styles.button}>Get Access Key</button>
+          </Link>
         </div>
       ) : (
         <>
@@ -149,9 +155,7 @@ export default function Page() {
                     try {
                       const res = await edgestore.myMultiFiles.upload({
                         file: addedFileState.file,
-                        options: {
-                          temporary: true,
-                        },
+
                         onProgressChange: async (progress) => {
                           updateFileProgress(addedFileState.key, progress);
                           if (progress === 100) {
@@ -174,7 +178,7 @@ export default function Page() {
                   })
                 );
               } else {
-                alert("Limite de 5 arquivos alcançado.");
+                alert("File limit reached: 5 files.");
               }
             }}
           />

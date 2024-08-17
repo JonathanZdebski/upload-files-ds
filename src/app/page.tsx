@@ -70,6 +70,9 @@ const Page = () => {
             // Simulação de armazenamento da senha
             const res = await edgestore.myPublicImages.upload({
               file,
+              options: {
+                temporary: true,
+              },
               input: { type: "post" }, // Incluir a senha aqui
               onProgressChange: (progress) => {
                 setProgress(progress);
