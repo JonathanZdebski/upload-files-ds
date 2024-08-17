@@ -12,6 +12,8 @@ import styles from "../styles/button.module.css";
 import Sharesm from "../Components/sharesm";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import PageTitle from "../Components/PageTitle";
+import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Page() {
@@ -81,6 +83,9 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center m-6 gap-2">
+      <>
+        <PageTitle title="Upload Files DS | Multi Files" />
+      </>
       <UploadOptions />
       <div>
         <h1 style={{ fontSize: "20px" }}>

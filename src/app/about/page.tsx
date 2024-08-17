@@ -1,10 +1,16 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import styles from "../styles/Content.module.css";
+import PageTitle from "../Components/PageTitle";
 
 const page = () => {
   return (
     <div className={styles.container}>
+      <>
+        <PageTitle title="Upload Files DS | About Us" />
+      </>
       <div className={styles.containertitle}>
         <h1 className={styles.title}>
           {" "}

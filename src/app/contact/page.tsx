@@ -4,7 +4,7 @@ import Styles from "../styles/contact.module.css";
 import React, { useRef } from "react";
 import Contactinfo from "../contact/contactinfo";
 import emailjs from "@emailjs/browser";
-
+import PageTitle from "../Components/PageTitle";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -61,6 +61,9 @@ const FormComponent: React.FC = () => {
 
   return (
     <div>
+      <>
+        <PageTitle title="Upload Files DS | Contact Us" />
+      </>
       <div className={Styles.form}>
         <div className={Styles.container}>
           <h1>

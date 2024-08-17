@@ -24,6 +24,10 @@ export default function RootLayout({
       <head>
         <title>{String(metadata.title)}</title>
         <meta name="description" content={String(metadata.description)} />
+        <meta
+          name="google-site-verification"
+          content="ZdDdkr8rensIcRxSdhlzsbtRReJ4EXa_MjkoORGrkxk"
+        />
         <Script
           id="gtm"
           strategy="afterInteractive"

@@ -9,6 +9,7 @@ import Sharesm from "./Components/sharesm";
 import Content from "./Components/Content";
 import UploadOptions from "./Components/UploadOptions";
 import Link from "next/link";
+import PageTitle from "./Components/PageTitle";
 
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);

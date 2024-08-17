@@ -11,6 +11,7 @@ import UploadOptions from "../Components/UploadOptions";
 import styles from "../styles/button.module.css";
 import { useState, useEffect } from "react";
 import Sharesm from "../Components/sharesm";
+import PageTitle from "../Components/PageTitle";
 
 export default function Page() {
   const [password, setPassword] = useState("");
@@ -79,6 +80,9 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center m-6 gap-2">
+      <>
+        <PageTitle title="Upload Files DS | Multi Images" />
+      </>
       <UploadOptions />
 
       <>
