@@ -14,13 +14,6 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const path = require("path");
-
-// Importação e configuração do dotenv-safe
-require("dotenv-safe").config({
-  example: path.join(__dirname, "../.env"),
-});
-
 export default function Page() {
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);

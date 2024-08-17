@@ -11,6 +11,13 @@ import UploadOptions from "./Components/UploadOptions";
 
 import Link from "next/link";
 
+const path = require("path");
+
+// Importação e configuração do dotenv-safe
+require("dotenv-safe").config({
+  example: path.join(__dirname, "../.env"),
+});
+
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
   const [password, setPassword] = useState("");
