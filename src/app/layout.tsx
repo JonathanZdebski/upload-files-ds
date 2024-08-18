@@ -10,7 +10,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Upload Files DS",
+  title:
+    "Upload Files DS | Unlimited Multi-File Transfer with Advanced Security",
   description:
     "The easy, fast, and secure way to send your files around the world without needing an account. Share your files, photos, and videos for free right now.",
 };

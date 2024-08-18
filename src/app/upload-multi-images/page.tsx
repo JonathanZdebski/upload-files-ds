@@ -32,7 +32,7 @@ export default function Page() {
     { url: string; name: string }[]
   >([]);
   const [currentFiles, setCurrentFiles] = useState(0);
-  const [showReloadButton, setShowReloadButton] = useState(false); // Estado para controlar a visibilidade do botão de recarga
+  const [showReloadButton, setShowReloadButton] = useState(false);
   const { edgestore } = useEdgeStore();
 
   function updateFileProgress(key: string, progress: FileState["progress"]) {
@@ -53,16 +53,13 @@ export default function Page() {
   };
 
   useEffect(() => {
-    // Aguarda 5 segundos antes de atualizar o estado para mostrar o botão de recarga
     const timer = setTimeout(() => {
       setShowReloadButton(true);
     }, 8000);
 
-    // Limpa o temporizador se o componente for desmontado ou se os arquivos forem carregados antes do tempo
     return () => clearTimeout(timer);
-  }, [uploadedFiles]); // Dependência para limpar o temporizador se os arquivos forem carregados
+  }, [uploadedFiles]);
 
-  // Função para calcular o tamanho total dos arquivos
   const calculateTotalFileSize = (files: string | any[]) => {
     let totalSize = 0;
     for (let i = 0; i < files.length; i++) {
@@ -71,7 +68,7 @@ export default function Page() {
     return totalSize;
   };
 
-  const maxAllowedSizePerUser = 15000000; // 15 MB
+  const maxAllowedSizePerUser = 15000000;
 
   useEffect(() => {
     const totalUsedSpace = calculateTotalFileSize(fileStates);
@@ -102,7 +99,7 @@ export default function Page() {
             const totalSize = calculateTotalFileSize(addedFiles);
             if (totalSize > maxAllowedSizePerUser) {
               alert("O tamanho total do upload excede o limite de 15 MB.");
-              return; // Cancela o upload
+              return;
             }
 
             if (currentFiles + addedFiles.length <= 5) {

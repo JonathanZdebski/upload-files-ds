@@ -55,7 +55,6 @@
     font-family: Arial, sans-serif;
     line-height: 1.8;
     font-size: 18px;
-    /* Removido position: absolute; e top/left ajustes */
   }
 
   .container input {
@@ -69,55 +68,55 @@
   
   @media (max-width: 1280px) {
     .form {
-        font-size: 1.5rem; /* Reduz o tamanho da fonte */
-        height: auto; /* Altera a altura para automática */
+        font-size: 1.5rem; 
+        height: auto; 
         margin-bottom: -5rem;
     }
 
     .container {
-        padding: 15px; /* Reduz o preenchimento */
+        padding: 15px;
     }
 
     .container h1 {
-        font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+        font-size: 1.5rem; 
     }
 
     .form {
-        gap: 7px; /* Reduz o espaço entre os itens dentro do formulário */
+        gap: 7px; 
     }
 
     .label {
-        font-size: 0.9rem; /* Reduz o tamanho da fonte das labels */
+        font-size: 0.9rem;
     }
 
     .containerquadrado {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
-        gap: 5px; /* Reduz o espaçamento entre as colunas */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+        gap: 5px; 
     }
 
     .quadradointerno, .quadradotwo, .quadradothree {
-        width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
+        width: 100%; 
     }
 
     .pa {
-        font-size: 16px; /* Reduz o tamanho da fonte */
+        font-size: 16px; 
     }
 }
 
 @media (max-width: 600px) {
   .form {
-    width: 130%; /* Define a largura do formulário para 50% da largura do contêiner pai */
-    font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    width: 130%;
+    font-size: 1.2rem; 
     align-items: center;
    justify-items: center;
    margin-left: 1rem;
 }
   .container {
-      padding: 15 px; /* Reduz o preenchimento */
+      padding: 15 px;
   }
 
   .container h1 {
-      font-size: 1.5rem; /* Reduz o tamanho da fonte do título */
+      font-size: 1.5rem;
       align-items: center;
       justify-content: center ;
       margin-left: 6rem;
@@ -128,28 +127,28 @@
   }
 
   .container textarea {
-    width: 80%; /* O textarea ocupará 80% da largura do contêiner */
-    max-width: 350px; /* Garante que o textarea não ultrapasse 300px */
+    width: 80%;
+    max-width: 350px; 
   }
 
   .form {
-      gap: 7px; /* Reduz o espaço entre os itens dentro do formulário */
+      gap: 7px;
   }
 
   .label {
-      font-size: 0.85rem; /* Reduz o tamanho da fonte das labels */
+      font-size: 0.85rem; 
   }
 
   .containerquadrado {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajusta o tamanho mínimo das colunas */
-      gap: 15px; /* Reduz o espaçamento entre as colunas */
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+      gap: 15px;
   }
 
   .quadradointerno, .quadradotwo, .quadradothree {
-      width: 100%; /* Faz com que os elementos ocupem toda a largura disponível */
+      width: 100%;
   }
 
   .pa {
-      font-size: 16px; /* Reduz o tamanho da fonte */
+      font-size: 16px;
   }
 }

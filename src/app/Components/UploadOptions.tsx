@@ -11,11 +11,11 @@ const uploadoptions = () => {
           <span className={styles.textWrapper}>
             <span className={styles.titleContainerOne}>Upload Images</span>
             <Image
-              src="/gallery.png" // Caminho para a sua imagem
+              src="/gallery.png"
               alt="Upload Image"
-              width={25} // Largura da imagem
-              height={25} // Altura da imagem
-              className={styles.image} // Classe CSS opcional para estilização
+              width={25}
+              height={25}
+              className={styles.image}
             />
           </span>
         </div>
@@ -27,11 +27,11 @@ const uploadoptions = () => {
               Upload Multi Images
             </span>
             <Image
-              src="/upload.png" // Caminho para a sua imagem
+              src="/upload.png"
               alt="Upload Multi Image"
-              width={23} // Largura da imagem
-              height={23} // Altura da imagem
-              className={styles.image} // Classe CSS opcional para estilização
+              width={23}
+              height={23}
+              className={styles.image}
             />
           </span>
         </div>
@@ -40,14 +40,14 @@ const uploadoptions = () => {
         <div className={styles.linkWrapper}>
           <span className={styles.textWrapper}>
             <span className={styles.titleContainerThree}>
-              Upload Multi Files (Premium)
+              Upload Multi Files
             </span>
             <Image
-              src="/file-lock.png" // Caminho para a sua imagem
+              src="/file-lock.png"
               alt="Upload Multi Files"
-              width={23} // Largura da imagem
-              height={23} // Altura da imagem
-              className={styles.image} // Classe CSS opcional para estilização
+              width={23}
+              height={23}
+              className={styles.image}
             />
           </span>
         </div>

@@ -6,22 +6,22 @@
 
 .containerquadrado {
   display: flex;
-  flex-wrap: wrap; /* Permite que os itens se ajustem em várias linhas */
-  justify-content: center; /* Centraliza os itens horizontalmente */
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  padding: 0 5rem; /* Ajusta o padding para dispositivos maiores */
-  box-sizing: border-box; /* Garante que padding e bordas sejam incluídos na largura total */
+  padding: 0 5rem; 
+  box-sizing: border-box; 
   margin-top: 10rem;
   max-width: 100%;
 }
 
 .quadradoone, .quadradotwo, .quadradothree {
-  flex-basis: calc(33.333% - 20px); /* Ajusta a base flexível para 3 colunas, subtraindo o gap */
-  max-width: calc(33.333% - 20px); /* Limita a largura máxima para evitar que fiquem muito grandes */
+  flex-basis: calc(33.333% - 20px); 
+  max-width: calc(33.333% - 20px); 
   display: flex;
-  flex-direction: column; /* Disposição vertical dos itens internos */
-  align-items: center; /* Centraliza os itens horizontalmente */
-  margin-bottom: 20px; /* Espaçamento entre os quadrados */
+  flex-direction: column; 
+  align-items: center;
+  margin-bottom: 20px; 
   margin-top: 1.3rem;
 }
 
@@ -29,7 +29,7 @@
   border-radius: 20px;
   padding: 1rem;
   background-color: rgba(240, 248, 255, 0.014);
-  margin-left: -5rem; /* Adiciona espaço à esquerda do texto */
+  margin-left: -5rem; 
   max-width: 50%;
 }
 
@@ -37,7 +37,6 @@
     font-family: Arial, sans-serif;
     line-height: 1.8;
     font-size: 18px;
-    /* Removido position: absolute; e top/left ajustes */
   }
 
   .contactinfo {
@@ -72,7 +71,7 @@
   
     .containertitle{
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
 
@@ -87,17 +86,17 @@
   }
 
   .containerquadrado {
-    padding: 0 2rem; /* Reduz o padding lateral para dispositivos menores */
+    padding: 0 2rem;
   }
 
   .quadradoone, .quadradotwo, .quadradothree {
-    width: 100%; /* Remove o limite máximo de largura */
+    width: 100%;
 
   }
 
   .contentp {
-    max-width: 100%; /* Permite que o texto ocupe toda a largura disponível */
-    margin-left: 0; /* Remove o espaço à esquerda do texto */
+    max-width: 100%; 
+    margin-left: 0; 
     background-color: aliceblue;
 
   }
@@ -108,7 +107,7 @@
 
 
   .pa, .contactinfo {
-    font-size: 16px; /* Ajusta o tamanho da fonte para melhor legibilidade */
+    font-size: 16px;
     margin-left: 2rem;
   }
 
@@ -123,20 +122,20 @@
   }
 
     .pa, .contactinfo {
-      font-size: 14px; /* Reduz o tamanho da fonte para uma versão mais leve */
+      font-size: 14px; 
     }
   
     .title {
-      font-size: 1.4rem; /* Reduz o tamanho da fonte para uma versão mais leve */
-      margin-top: 1rem; /* Reduz a margem superior para uma distância mais razoável */
-      margin-left: 0; /* Remove a margem esquerda para economizar espaço */
-      margin-bottom: 0; /* Normaliza a margem inferior */
+      font-size: 1.4rem;
+      margin-top: 1rem; 
+      margin-left: 0;
+      margin-bottom: 0;
     }
   
     .contentp {
-      border-radius: 10px; /* Reduz o raio do borda para uma versão mais leve */
-      padding: 0.5rem; /* Reduz o padding para economizar espaço */
-      background-color: rgba(240, 248, 255, 0.01); /* Ajusta a transparência para uma versão mais leve */
+      border-radius: 10px; 
+      padding: 0.5rem; 
+      background-color: rgba(240, 248, 255, 0.01); 
     }
   }
   

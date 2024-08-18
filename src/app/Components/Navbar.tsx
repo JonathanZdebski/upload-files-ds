@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
-import image from "../../../public/clouds.png";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles["logo-container"]}>
-        <img src="/clouds.png" alt="Logo" className={styles.logo} />
+        <img src="/protection.png" alt="Logo" className={styles.logo} />
         <a href="/" className={styles.titleLink}>
           <span className={styles.title}>Upload Files DS</span>
         </a>

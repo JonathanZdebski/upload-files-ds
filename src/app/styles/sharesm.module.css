@@ -10,7 +10,7 @@
   .socialLinksList {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Espaçamento entre os ícones */
+    gap: 20px; 
     list-style-type: none;
     padding: 0;
   }
@@ -23,7 +23,7 @@
   .icon_twitter:hover,
   .icon_instagram:hover,
   .icon_linkedin:hover {
-    transform: scale(1.2); /* Aumenta o tamanho do ícone para 120% do original */
-    transition: transform 0.3s ease-in-out; /* Ajusta a duração e a função de tempo */
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
   }
   

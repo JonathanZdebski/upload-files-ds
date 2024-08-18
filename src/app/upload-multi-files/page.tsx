@@ -34,7 +34,7 @@ export default function Page() {
     { url: string; name: string }[]
   >([]);
   const [currentFiles, setCurrentFiles] = useState(0);
-  const [showReloadButton, setShowReloadButton] = useState(false); // Estado para controlar a visibilidade do botão de recarga
+  const [showReloadButton, setShowReloadButton] = useState(false);
   const { edgestore } = useEdgeStore();
 
   function updateFileProgress(key: string, progress: FileState["progress"]) {
@@ -55,16 +55,13 @@ export default function Page() {
   };
 
   useEffect(() => {
-    // Aguarda 5 segundos antes de atualizar o estado para mostrar o botão de recarga
     const timer = setTimeout(() => {
       setShowReloadButton(true);
     }, 8000);
 
-    // Limpa o temporizador se o componente for desmontado ou se os arquivos forem carregados antes do tempo
     return () => clearTimeout(timer);
-  }, [uploadedFiles]); // Dependência para limpar o temporizador se os arquivos forem carregados
+  }, [uploadedFiles]);
 
-  // Função para calcular o tamanho total dos arquivos
   const calculateTotalFileSize = (files: string | any[]) => {
     let totalSize = 0;
     for (let i = 0; i < files.length; i++) {
@@ -88,11 +85,11 @@ export default function Page() {
       <UploadOptions />
       <div>
         <h1 style={{ fontSize: "20px" }}>
-          Upload Multi Files (IMG, PDFs, Documents, Videos)
+          Upload Multi Files (IMG, PDFs, Docs, Videos)
         </h1>
 
         <p style={{ textAlign: "center" }}>
-          Your files are permanently saved in the cloud.
+          <strong>Your files are permanently saved in the cloud.</strong>
         </p>
         <br />
       </div>
@@ -130,7 +127,16 @@ export default function Page() {
             passHref
             target="_blank"
           >
-            <button className={styles.button}>Get Access Key</button>
+            <button className={styles.button}>
+              <img
+                src="crown.png"
+                alt="Vip"
+                width="30"
+                height="30"
+                style={{ display: "inline-block", marginRight: "10px" }}
+              />
+              Get Access Key
+            </button>
           </Link>
         </div>
       ) : (
@@ -143,8 +149,8 @@ export default function Page() {
             onFilesAdded={async (addedFiles) => {
               const totalSize = calculateTotalFileSize(addedFiles);
               if (totalSize > maxAllowedSizePerUser) {
-                alert("O tamanho total do upload excede o limite de 15 MB.");
-                return; // Cancela o upload
+                alert("");
+                return;
               }
 
               if (currentFiles + addedFiles.length <= 5) {

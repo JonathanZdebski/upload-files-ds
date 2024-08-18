@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  height: 10vh;
+  height: 15vh;
   padding: 1rem 0;
   margin-bottom: -5rem;
   background-color: rgba(128, 128, 128, 0.158);
@@ -23,27 +23,26 @@
   align-items: center;
   flex-wrap: wrap;
   
-  /* Removido position: absolute; e bottom: 0; */
 }
 
-@media (zoom: 1.5) { /* Exemplo de media query para zoom */
+@media (zoom: 1.5) { 
   .footer {
-    position: fixed; /* Ou outra solução específica para zoom alto */
+    position: fixed;
   }
 }
 
 @media (max-width: 768px) {
   .footer {
-    height: auto; /* Altura automática para adaptar ao conteúdo */
-    padding: 2rem; /* Aumenta o padding para melhorar a legibilidade */
+    height: auto;
+    padding: 2rem; 
     bottom: 0;
     margin-bottom: -25rem;
   }
 
   .footercontainer {
-    flex-direction: column; /* Organiza os itens verticalmente */
-    text-align: center; /* Centraliza o texto */
-    gap: 20px; /* Reduz o espaço entre os itens para economizar espaço */
+    flex-direction: column; 
+    text-align: center;
+    gap: 20px;
     bottom: 0;
   }
 }

@@ -89,17 +89,17 @@
 .buttonTwo::after {
   content: "";
   position: absolute;
-  bottom: 0; /* Posiciona a linha na parte inferior do botão */
-  left: 0; /* Começa a linha do lado esquerdo do botão */
-  width: 0%; /* Inicialmente, a linha tem largura 0% */
-  height: 2px; /* Altura da linha */
-  background: white; /* Cor da linha */
-  transform-origin: left; /* Origem da transformação é o lado esquerdo */
-  transition: width 0.3s ease-in-out; /* Animação da largura da linha */
+  bottom: 0; 
+  left: 0; 
+  width: 0%;
+  height: 2px;
+  background: white;
+  transform-origin: left; 
+  transition: width 0.3s ease-in-out; 
 }
 
 .buttonTwo:hover::after {
-  width: 100%; /* Finaliza a animação com a linha ocupando toda a largura */
+  width: 100%; 
 }
 
 .marginbtn{
@@ -165,24 +165,23 @@ text-align: center;
 }
 
 .titleContainerOne {
-  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
-  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  position: relative; 
+  overflow: hidden; 
   padding: 5px;
   transition: 0.2s ease-in-out;
 }
 
 .linkWrapper {
-  display: inline-flex; /* Usa flexbox para alinhar itens horizontalmente */
-  align-items: center; /* Centraliza verticalmente os itens */
-  cursor: pointer; /* Muda o cursor para um ponteiro quando passa o mouse */
+  display: inline-flex; 
+  align-items: center; 
+  cursor: pointer; 
 }
 
 .textWrapper {
-  display: flex; /* Usa flexbox para alinhar a imagem e o texto lado a lado */
-  align-items: center; /* Centraliza verticalmente a imagem e o texto */
-  margin-right: 8px; /* Espaço entre a imagem e o texto */
+  display: flex;
+  align-items: center; 
+  margin-right: 8px; 
 }
-
 
 .titleContainerOne:hover{
   background-color: rgba(240, 248, 255, 0.103);
@@ -192,8 +191,8 @@ text-align: center;
 
 
 .titleContainerTwo {
-  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
-  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  position: relative;
+  overflow: hidden; 
   padding: 5px;
   transition: 0.2s ease-in-out;
   margin-left: 2rem;
@@ -206,8 +205,8 @@ text-align: center;
 }
 
 .titleContainerThree {
-  position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
-  overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+  position: relative;
+  overflow: hidden; 
   padding: 5px;
   transition: 0.2s ease-in-out;
   margin-left: 2rem;
@@ -219,14 +218,12 @@ text-align: center;
   transition: 0.2s ease-in-out;
 }
 
-/* Login.module.css */
-
 .containerlogin {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  gap: 10px; /* Espaçamento entre o input e o botão */
+  gap: 10px;
 }
 
 .containerlogin h1 {
@@ -251,7 +248,7 @@ text-align: center;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
-@media (max-width: 768px) { /* Ajuste esta largura conforme necessário */
+@media (max-width: 768px) {
 
 .titleContainer{
   display: flex;
@@ -263,7 +260,7 @@ text-align: center;
   .titleContainerOne,
   .titleContainerTwo,
   .titleContainerThree {
-    flex: 1 1 auto; /* Ajuste automaticamente a largura baseada no conteúdo */
+    flex: 1 1 auto; 
     padding: 3px;
     margin-bottom: 1rem;
     text-align: center;

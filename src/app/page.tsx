@@ -27,7 +27,7 @@ const Page = () => {
   const [shouldReload, setShouldReload] = useState(false);
 
   const reloadPage = () => {
-    window.location.reload(); // Recarrega a página
+    window.location.reload();
   };
 
   return (
@@ -67,13 +67,12 @@ const Page = () => {
         className={styles.button}
         onClick={async () => {
           if (file) {
-            // Simulação de armazenamento da senha
             const res = await edgestore.myPublicImages.upload({
               file,
               options: {
                 temporary: true,
               },
-              input: { type: "post" }, // Incluir a senha aqui
+              input: { type: "post" },
               onProgressChange: (progress) => {
                 setProgress(progress);
               },
@@ -82,8 +81,6 @@ const Page = () => {
               url: res.url,
               thumbnailUrl: res.thumbnailUrl,
             });
-
-            // Simulação de recuperação da senha
           }
         }}
       >

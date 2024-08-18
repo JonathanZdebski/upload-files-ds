@@ -24,7 +24,7 @@ const variants = {
 
 export type FileState = {
   file: File;
-  key: string; // used to identify the file in the progress callback
+  key: string;
   progress: "PENDING" | "COMPLETE" | "ERROR" | number;
   abortController?: AbortController;
 };
@@ -161,7 +161,13 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
             >
               <input ref={ref} {...getInputProps()} />
               <div className="flex flex-col items-center justify-center text-xs text-gray-400">
-                <UploadCloudIcon className="mb-1 h-7 w-7" />
+                <img
+                  src="cloud-computing.png"
+                  alt="Vip"
+                  width="35"
+                  height="35"
+                  style={{ marginRight: "" }}
+                />
                 <div className="text-gray-400">
                   drag & drop or click to upload
                 </div>

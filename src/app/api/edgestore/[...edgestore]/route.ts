@@ -11,7 +11,7 @@ type Context = {
 };
 
 function createContext({ req }: CreateContextOptions): Context {
-    // Substitua "123" e "admin" pelos valores reais ou lógica para obter esses valores
+
     return {};
 }
 

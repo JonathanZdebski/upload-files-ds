@@ -39,24 +39,24 @@ const page = () => {
               With the goal of innovating and renewing technologies available in
               the market,
             </strong>
-            we created this project with a special focus on security and the
-            privacy of data and files. By choosing Upload Files DS for storage
-            or movement of your files, you will benefit from a robustly
-            fortified cloud platform. Not only offers logistical and regulatory
-            advantages but also reinforces our commitment to strict security
-            standards. To ensure the integrity and privacy of data exchanged
-            between Upload Files DS and our servers, all transmissions are
-            encrypted using SSL/TLS. This additional measure of security helps
-            protect your information against unauthorized access and ensures
-            that your communications remain confidential. With these advanced
-            security practices, we are committed to offering a file storage
-            solution that not only meets the modern needs of digitization but
-            also forms part of a responsible and secure data management
-            strategy. Our integrated approach to security, privacy, and
-            efficiency makes Upload Files DS a reliable choice for companies and
-            individuals who value the protection of their digital information.
-            Together, we can build a future where innovation and security go
-            hand in hand."
+            We created this project with a special focus on the security and
+            privacy of data and files. By choosing Upload Files DS for the
+            storage or transfer of your files, you will benefit from a robustly
+            fortified cloud platform. Not only does it offer logistical and
+            regulatory advantages, but it also reinforces our commitment to
+            strict security standards. To ensure the integrity and privacy of
+            data exchanged between Upload Files DS and our servers, all
+            transmissions are encrypted using SSL/TLS. This added layer of
+            security helps protect your information against unauthorized access
+            and ensures that your communications remain confidential. With these
+            advanced security practices, we are committed to offering a file
+            storage solution that not only meets the modern needs of
+            digitization but also forms a crucial part of a responsible and
+            secure data management strategy. Our integrated approach to
+            security, privacy, and efficiency makes Upload Files DS a reliable
+            choice for companies and individuals who value the protection of
+            their digital information. Together, we can build a future where
+            innovation and security go hand in hand."
           </p>
         </div>
       </div>

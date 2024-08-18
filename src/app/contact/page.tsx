@@ -10,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ContactIcon } from "lucide-react";
 
-// Especificando o tipo de referência para melhorar a segurança de tipos
 const FormComponent: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
 
@@ -47,14 +46,14 @@ const FormComponent: React.FC = () => {
 
     if (isFormFilled) {
       toast.success("Your e-mail was sent successfully!", {
-        position: "top-right", // Correção: Usar string diretamente
+        position: "top-right",
       });
       setTimeout(() => {
         window.location.reload();
       }, 6000);
     } else {
       toast.error("Please fill out all fields before sending the email.", {
-        position: "top-center", // Correção: Usar string diretamente
+        position: "top-center",
       });
     }
   };

@@ -1,12 +1,11 @@
-/* components/Navbar.module.css */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Distribui o espaço igualmente entre os itens */
-    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; 
+    align-items: center; 
     padding: 20px;
     background-color: #ffffff00;
     color: #fff;
-    width: 100%; /* Garante que o navbar ocupe toda a largura disponível */
+    width: 100%; 
   }
   
   .logo-container {
@@ -15,7 +14,7 @@
   }
   
   .logo {
-    width: 50px; /* Ajuste conforme o tamanho do seu logo */
+    width: 50px; 
     margin-right: 15px;
     margin-left: 1rem;
   }
@@ -28,24 +27,24 @@
   
   .menu li {
     margin-left: 20px;
-    position: relative; /* Posicionamento relativo para o hover funcionar corretamente */
-    overflow: hidden; /* Esconde a parte da linha que ultrapassa o item */
+    position: relative; 
+    overflow: hidden; 
   }
   
   .menu li::before {
-    content: ""; /* Conteúdo vazio para criar um pseudo-elemento */
-    position: absolute; /* Posicionamento absoluto para controlar a linha */
-    bottom: 0; /* Posição da linha no final inferior do item */
-    left: -100%; /* Começa fora da tela à esquerda */
-    width: 100%; /* Largura total do item */
-    height: 2px; /* Altura da linha */
-    background: white; /* Cor da linha */
-    transform-origin: right; /* Origem da transformação é o lado direito */
-    transition: left 0.2s ease-in-out; /* Animação da posição da linha */
+    content: ""; 
+    position: absolute; 
+    bottom: 0; 
+    left: -100%;
+    width: 100%; 
+    height: 2px;
+    background: white;
+    transform-origin: right; 
+    transition: left 0.2s ease-in-out; 
   }
   
   .menu li:hover::before {
-    left: 0; /* Move a linha para a frente, mostrando a expansão */
+    left: 0; 
   }
   
   
@@ -60,21 +59,21 @@
   
   @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Muda a direção do flex para coluna */
+        flex-direction: column; 
     }
 
     .menu {
-        margin-right: 0; /* Remove a margem direita */
-        flex-direction: row; /* Muda a direção do menu para coluna */
+        margin-right: 0; 
+        flex-direction: row;
     }
 
     .menu li {
-        margin-top: 10px; /* Adiciona margem superior para separar os itens */
+        margin-top: 10px; 
     }
 
     .menu li::before {
-        top: 0; /* Muda a posição da linha para o topo */
-        bottom: auto; /* Remove a posição do fundo */
-        transform-origin: top; /* Origem da transformação é o topo */
+        top: 0; 
+        bottom: auto; 
+        transform-origin: top;
     }
 }
