@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.3.1",
     "@edgestore/react": "^0.2.2",
     "@edgestore/server": "^0.2.2",
     "@emailjs/browser": "^4.4.1",
@@ -16,6 +17,7 @@
     "express": "^4.19.2",
     "lucide-react": "^0.427.0",
     "next": "^14.2.5",
+    "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",

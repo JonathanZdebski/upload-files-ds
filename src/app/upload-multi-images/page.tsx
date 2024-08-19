@@ -97,6 +97,7 @@ export default function Page() {
           }}
           onFilesAdded={async (addedFiles) => {
             const totalSize = calculateTotalFileSize(addedFiles);
+
             if (totalSize > maxAllowedSizePerUser) {
               alert("O tamanho total do upload excede o limite de 15 MB.");
               return;
@@ -111,7 +112,7 @@ export default function Page() {
                     const res = await edgestore.myMultiImages.upload({
                       file: addedFileState.file,
                       options: {
-                        temporary: true,
+                        //temporary: true,
                       },
                       onProgressChange: async (progress) => {
                         updateFileProgress(addedFileState.key, progress);

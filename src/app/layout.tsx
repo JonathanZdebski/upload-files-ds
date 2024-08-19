@@ -5,6 +5,13 @@ import Script from "next/script";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { Inter } from "next/font/google";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -43,9 +50,11 @@ export default function RootLayout({
         ></Script>
       </head>
       <body className={inter.className}>
-        <Navbar />
-        <EdgeStoreProvider>{children}</EdgeStoreProvider>
-        <Footer />
+        <ClerkProvider>
+          <Navbar />
+          <EdgeStoreProvider>{children}</EdgeStoreProvider>
+          <Footer />
+        </ClerkProvider>
       </body>
     </html>
   );

@@ -70,7 +70,7 @@ const Page = () => {
             const res = await edgestore.myPublicImages.upload({
               file,
               options: {
-                temporary: true,
+                //temporary: true,
               },
               input: { type: "post" },
               onProgressChange: (progress) => {

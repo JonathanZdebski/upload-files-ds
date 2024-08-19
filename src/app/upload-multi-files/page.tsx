@@ -20,8 +20,8 @@ export default function Page() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    const expectedPassword = process.env.NEXT_PUBLIC_PASSWORD;
-    if (password === expectedPassword) {
+    const PASSWORD = process.env.NEXT_PUBLIC_PASSWORD;
+    if (password === PASSWORD) {
       setIsLoggedIn(true);
       toast.success("Access granted!");
     } else {
