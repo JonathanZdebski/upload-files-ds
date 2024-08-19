@@ -35,7 +35,7 @@ const Navbar = () => {
               <UserButton />
             </div>
           ) : (
-            <div>
+            <div className={styles.loginstyle}>
               <Link className="marginRight-3" href="sign-in">
                 Login
               </Link>

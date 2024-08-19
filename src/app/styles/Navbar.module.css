@@ -63,6 +63,13 @@
     color: #ddd;
   }
   
+.loginstyle{
+   padding: 10px;
+    border-radius: 10px;
+    background-color: #dddddd15;
+    margin-top: -0.7rem;
+}
+
   @media (max-width: 768px) {
     .navbar {
         flex-direction: column; 
@@ -82,4 +89,10 @@
         bottom: auto; 
         transform-origin: top;
     }
+    .loginstyle{
+      padding: 10px;
+       border-radius: 10px;
+       background-color: #dddddd27;
+       margin-top: -0rem;
+   }
 }

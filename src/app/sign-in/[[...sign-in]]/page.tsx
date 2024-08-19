@@ -1,9 +1,10 @@
 import { SignIn } from "@clerk/nextjs";
 import Content from "@/app/Components/Content";
+import styles from "../../styles/Login.module.css";
 
 export default function Page() {
   return (
-    <div className="flex items-center  justify-center flex-col gap-10 mt-20">
+    <div className={styles.signin}>
       <SignIn />
       <Content />
     </div>

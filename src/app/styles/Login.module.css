@@ -21,4 +21,12 @@
     transition: background-color 0.3s ease;
     margin-bottom: 20px;
   }
-  
+
+.signin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.5rem; /* Assumindo que 1 unit é igual a 0.25rem, que é a conversão padrão de Tailwind para rem */
+  margin-top: 5rem;
+}
