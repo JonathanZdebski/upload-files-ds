@@ -34,6 +34,24 @@
   transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
 }
 
+.loginbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  margin: auto;
+  position: absolute;
+  margin-top: 15px;
+  left: 0;
+  right: 0;
+}
+
+.ContainerLoginBtn{
+  background-color: #dddddd09;
+  padding: 2rem;
+  border-radius: 10px;
+}
 
 .button:hover {
   color: var(--btn-color);
