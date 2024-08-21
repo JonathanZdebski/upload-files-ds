@@ -14,7 +14,7 @@ import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 
 const variants = {
-  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[-200rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5",
+  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[-200rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl",
   active: "border-2",
   disabled:
     "bg-gray-200 border-gray-300 cursor-default pointer-events-none bg-opacity-30 dark:bg-gray-700 dark:border-gray-600",

@@ -6,6 +6,8 @@ import Contactinfo from "../contact/contactinfo";
 import emailjs from "@emailjs/browser";
 import PageTitle from "../Components/PageTitle";
 import { ToastContainer, toast } from "react-toastify";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ContactIcon } from "lucide-react";
@@ -59,66 +61,70 @@ const FormComponent: React.FC = () => {
   };
 
   return (
-    <div>
-      <>
-        <PageTitle title="Upload Files DS | Contact Us" />
-      </>
-      <div className={Styles.form}>
-        <div className={Styles.container}>
-          <h1>
-            <strong>CONTACT US</strong>
-          </h1>
-          <form ref={form} onSubmit={sendEmail}>
-            <label htmlFor="user_name">Name</label>
-            <br />
-            <input
-              type="text"
-              id="user_name"
-              name="user_name"
-              required
-              style={{ width: "500px", height: "35px", color: "black" }}
-            />
+    <>
+      <Navbar />
+      <div>
+        <>
+          <PageTitle title="Upload Files DS | Contact Us" />
+        </>
+        <div className={Styles.form}>
+          <div className={Styles.container}>
+            <h1>
+              <strong>CONTACT US</strong>
+            </h1>
+            <form ref={form} onSubmit={sendEmail}>
+              <label htmlFor="user_name">Name</label>
+              <br />
+              <input
+                type="text"
+                id="user_name"
+                name="user_name"
+                required
+                style={{ width: "500px", height: "35px", color: "black" }}
+              />
 
-            <br />
-            <label htmlFor="user_email">E-mail</label>
-            <br />
-            <input
-              type="email"
-              id="user_email"
-              name="user_email"
-              required
-              style={{ width: "500px", height: "35px", color: "black" }}
-            />
-            <br />
-            <label htmlFor="subject">Subject</label>
-            <br />
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              required
-              style={{ width: "500px", height: "35px", color: "black" }}
-            />
-            <br />
-            <label htmlFor="message">Message</label>
-            <br />
-            <textarea
-              id="message"
-              style={{ width: "500px", height: "200px", color: "black" }}
-              name="message"
-              rows={6}
-              required
-            ></textarea>
-            <br />
-            <button type="submit" onClick={handleSendMessage} className="btn">
-              Send Message
-            </button>
-            <ToastContainer />
-          </form>
+              <br />
+              <label htmlFor="user_email">E-mail</label>
+              <br />
+              <input
+                type="email"
+                id="user_email"
+                name="user_email"
+                required
+                style={{ width: "500px", height: "35px", color: "black" }}
+              />
+              <br />
+              <label htmlFor="subject">Subject</label>
+              <br />
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                required
+                style={{ width: "500px", height: "35px", color: "black" }}
+              />
+              <br />
+              <label htmlFor="message">Message</label>
+              <br />
+              <textarea
+                id="message"
+                style={{ width: "500px", height: "200px", color: "black" }}
+                name="message"
+                rows={6}
+                required
+              ></textarea>
+              <br />
+              <button type="submit" onClick={handleSendMessage} className="btn">
+                Send Message
+              </button>
+              <ToastContainer />
+            </form>
+          </div>
         </div>
+        <Contactinfo />
       </div>
-      <Contactinfo />
-    </div>
+      <Footer />
+    </>
   );
 };
 

@@ -37,7 +37,10 @@ const edgeStoreRouter = es.router({
     myMultiImages: es.fileBucket({
         maxSize: 1024 * 1024 * 2,
     }),
-   
+
+    myNextImages: es.imageBucket({
+        maxSize: 1024 * 1024 * 2,
+    }),
 
 });
 
