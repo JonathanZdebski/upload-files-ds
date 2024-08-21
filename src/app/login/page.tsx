@@ -1,18 +1,17 @@
+"use client";
+
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "../Components/ui/button";
 import { UserAuthForm } from "../Components/user-auth-form";
-
-export const metadata: Metadata = {
-  title: "Upload Files DS | Login",
-  description: "Login page.",
-};
+import PageTitle from "../Components/PageTitle";
 
 export default function AuthenticationPage() {
   return (
     <>
+      <PageTitle title="Upload Files DS | Login" />
       <div className="container relative min-h-screen flex flex-col items-center justify-center md:grid lg:max-w-full lg:grid-cols-2 lg:px-0 rounded-xl border-4 border-gray-500">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex rounded-xl  ">
           <div
