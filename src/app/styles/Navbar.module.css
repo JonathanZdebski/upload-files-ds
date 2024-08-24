@@ -24,17 +24,12 @@
     display: flex; /* Garante que os itens do menu sejam tratados como flex items */
   
   }
-  
-.signIn{
-  margin-left: 2rem;
-  margin-right: 1rem;
-  height: 0;
-}
 
   .menu li {
     margin-left: 20px;
     position: relative; 
     overflow: hidden; 
+    
   }
   
   .menu li::before {
@@ -47,6 +42,7 @@
     background: white;
     transform-origin: right; 
     transition: left 0.2s ease-in-out; 
+    margin-bottom: 0.4rem;
   }
   
   .menu li:hover::before {
@@ -67,8 +63,10 @@
    padding: 10px;
     border-radius: 10px;
     background-color: #dddddd15;
-    margin-top: -0.7rem;
-}
+    margin-top: -0.6rem;
+    margin-left: 1.5rem;
+} 
+
 
   @media (max-width: 768px) {
     .navbar {

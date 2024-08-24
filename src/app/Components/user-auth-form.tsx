@@ -7,6 +7,7 @@ import { Icons } from "../Components/icons";
 import { Button } from "../Components/ui/button";
 import { Input } from "../Components/input";
 import { Label } from "../Components/label";
+import { signIn } from "next-auth/react";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -22,10 +23,37 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     }, 3000);
   }
 
+  const handleSignIn = async () => {
+    setIsLoading(true);
+    try {
+      await signIn("google", {
+        callbackUrl: "/", // Defina o callbackUrl se necessário
+      });
+    } catch (error) {
+      console.error("Error signing in:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGithubSignIn = async () => {
+    setIsLoading(true);
+    try {
+      await signIn("github", {
+        callbackUrl: "/", // Defina o callbackUrl se necessário
+      });
+    } catch (error) {
+      console.error("Error signing in with GitHub:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
+          {/*
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
               Email
@@ -40,15 +68,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading}>
+           <Button disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
             Sign In with Email
           </Button>
+           */}
         </div>
       </form>
-      <div className="relative ">
+      {/*<div className="relative ">
         <div className="absolute flex items-center ">
           <span className="w-full border-t" />
         </div>
@@ -58,13 +87,32 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      */}
+      <Button
+        variant="outline"
+        type="button"
+        onClick={handleSignIn}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        ) : (
+          <Icons.google className="mr-2 h-4 w-4 " />
+        )}{" "}
+        Google Account
+      </Button>
+      <Button
+        variant="outline"
+        type="button"
+        onClick={handleGithubSignIn}
+        disabled={isLoading}
+      >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4 " />
         )}{" "}
-        GitHub
+        GitHub Account
       </Button>
     </div>
   );

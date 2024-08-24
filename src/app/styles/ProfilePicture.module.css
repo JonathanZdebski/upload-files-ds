@@ -1,0 +1,13 @@
+.profilepicture {
+  height: 30px;
+  width: 30px; /* Certifique-se de definir a largura também */
+  border-radius: 20px;
+  background-color: #dddddd15;
+  transition: box-shadow 0.2s ease-in-out;
+  margin-right: 1rem;
+}
+
+.profilepicture:hover {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 
+              0 2px 6px rgba(0, 0, 0, 0.3);
+}
