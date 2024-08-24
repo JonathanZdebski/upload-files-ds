@@ -40,7 +40,7 @@ export default function AuthenticationPage() {
               <h1 className="text-2xl font-semibold tracking-tight">
                 Create an account
               </h1>
-
+              <p></p>
               <p className="text-sm text-muted-foreground">
                 Login below to create your account
               </p>
