@@ -18,10 +18,15 @@ export default function AuthenticationPage() {
             className="absolute inset-0 rounded-xl"
             style={{ backgroundColor: "rgba(31, 41, 55, 0.5)" }}
           />
-          <div className="relative z-20 flex items-center text-lg ont-medium rounded-lg">
-            <img src="/protection.png" alt="Logo" className="size-14 mr-3" />
+          <div className="relative z-20 flex items-center text-lg font-medium rounded-lg md:mt-0">
+            <img
+              src="/protection.png"
+              alt="Logo"
+              className="w-14 h-14 mr-3 md:mr-4"
+            />
             Upload Files DS
           </div>
+
           <div className="relative z-20 mt-auto rounded-xl">
             <blockquote className="space-y-2">
               <p className="text-lg">
@@ -38,7 +43,7 @@ export default function AuthenticationPage() {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] ">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                Create an account
+                Sign in to an account
               </h1>
               <p></p>
               <p className="text-sm text-muted-foreground">
