@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { EdgeStoreProvider } from "./lib/edgestore";
 import Script from "next/script";
 import { Inter } from "next/font/google";
-import Head from "next/head";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
@@ -22,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <header>
         <title>{String(metadata.title)}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={String(metadata.description)} />
@@ -41,7 +40,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PS2PC45L');`,
           }}
         />
-      </Head>
+      </header>
       <body className={inter.className}>
         <header></header>
 
