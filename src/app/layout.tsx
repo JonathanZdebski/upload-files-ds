@@ -21,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <header>
-        <title>{String(metadata.title)}</title>
+      <head>
+        <title>
+          Upload Files DS | Unlimited Multi-File Transfer with Advanced Security
+        </title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={String(metadata.description)} />
         <meta
@@ -40,7 +42,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PS2PC45L');`,
           }}
         />
-      </header>
+      </head>
       <body className={inter.className}>
         <header></header>
 
