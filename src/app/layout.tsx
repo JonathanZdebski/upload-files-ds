@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EdgeStoreProvider } from "./lib/edgestore";
 import Script from "next/script";
 import { Inter } from "next/font/google";
-// import { ClerkProvider } from "@clerk/nextjs";
+import Head from "next/head";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <header>
+      <Head>
         <title>{String(metadata.title)}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={String(metadata.description)} />
@@ -40,9 +40,11 @@ export default function RootLayout({
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-PS2PC45L');`,
           }}
-        ></Script>
-      </header>
+        />
+      </Head>
       <body className={inter.className}>
+        <header></header>
+
         <SessionProvider>
           <EdgeStoreProvider>{children}</EdgeStoreProvider>
         </SessionProvider>

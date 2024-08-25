@@ -29,7 +29,7 @@ const popoverProfile = () => {
           <span className="mr-2">
             <Header />
           </span>
-          Olá, {session.user?.name}
+          Hello, {session.user?.name}
         </h3>
 
         <p className="border-b border-gray-300 pb-4 mb-1 ">

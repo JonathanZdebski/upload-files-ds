@@ -38,7 +38,7 @@ const Page = () => {
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
-          <h1 style={{ fontSize: "20px" }}>Upload One Image at a Time</h1>
+          <h2 style={{ fontSize: "20px" }}>Upload One Image at a Time</h2>
 
           <p style={{ textAlign: "center" }}>Max size is 2 MB per file.</p>
           <br />
