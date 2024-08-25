@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { EdgeStoreProvider } from "./lib/edgestore";
 import Script from "next/script";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import Head from "next/head";
 import { Inter } from "next/font/google";
 // import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
@@ -24,8 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <title>{String(metadata.title)}</title>
+        <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={String(metadata.description)} />
         <meta
           name="google-site-verification"
@@ -42,7 +42,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-PS2PC45L');`,
           }}
         ></Script>
-      </head>
+      </Head>
       <body className={inter.className}>
         <SessionProvider>
           <EdgeStoreProvider>{children}</EdgeStoreProvider>
