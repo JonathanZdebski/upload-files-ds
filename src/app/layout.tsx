@@ -7,13 +7,6 @@ import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title:
-    "Upload Files DS | Unlimited Multi-File Transfer with Advanced Security",
-  description:
-    "The easy, fast, and secure way to send your files around the world without needing an account. Share your files, photos, and videos for free right now.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,11 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>
-          Upload Files DS | Unlimited Multi-File Transfer with Advanced Security
-        </title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={String(metadata.description)} />
         <meta
           name="google-site-verification"
           content="ZdDdkr8rensIcRxSdhlzsbtRReJ4EXa_MjkoORGrkxk"

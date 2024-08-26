@@ -84,10 +84,12 @@ export default function Page() {
   return (
     <>
       <Navbar />
+
+      <PageTitle
+        title="Upload Files DS - Quick and Secure File Transfers"
+        description="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
-        <>
-          <PageTitle title="Upload Files DS | Multi Files" />
-        </>
         <UploadOptions />
         <div>
           <h1 style={{ fontSize: "20px" }}>

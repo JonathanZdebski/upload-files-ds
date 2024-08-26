@@ -9,9 +9,10 @@ import Sharesm from "./Components/sharesm";
 import Content from "./Components/Content";
 import UploadOptions from "./Components/UploadOptions";
 import Link from "next/link";
-import PageTitle from "./Components/PageTitle";
+import Head from "next/head";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import PageTitle from "./Components/PageTitle";
 
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -35,6 +36,10 @@ const Page = () => {
   return (
     <>
       <Navbar />
+      <PageTitle
+        title="Upload Files DS - Effortless and Secure File Sharing"
+        description="Share your files, photos, and videos worldwide with ease and security. No account needed. Start sharing today for free."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>

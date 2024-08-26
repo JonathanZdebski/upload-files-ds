@@ -14,6 +14,7 @@ import Sharesm from "../Components/sharesm";
 import PageTitle from "../Components/PageTitle";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Head from "next/head";
 
 export default function Page() {
   const [password, setPassword] = useState("");
@@ -80,11 +81,11 @@ export default function Page() {
   return (
     <>
       <Navbar />
-
+      <PageTitle
+        title="Upload Files DS - Fast and Secure File Transfer Without an Account"
+        description="Simply select your files to upload or drag and drop them directly into your browser."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
-        <>
-          <PageTitle title="Upload Files DS | Multi Images" />
-        </>
         <UploadOptions />
 
         <>
