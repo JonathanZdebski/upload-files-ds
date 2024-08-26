@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import { connectToUsersAuthenticatedDB } from '../src/lib/mongodb';
+import User from './app/models/User';
 
 export const {
   handlers: { GET, POST },
@@ -18,8 +20,30 @@ export const {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
-  pages: {
-    signIn: "/auth/signin", // Página de login personalizada
-    error: "/", // Redireciona para a página inicial em caso de erro
-  },
-});
+
+  callbacks: {
+    async signIn({ user }) {
+      // Conecta ao MongoDB
+      await connectToUsersAuthenticatedDB();
+
+      // Verifica se o usuário já está registrado
+      const existingUser = await User.findOne({ email: user.email });
+      if (!existingUser) {
+        // Registra um novo usuário se ele não estiver registrado
+        const newUser = new User({
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          permissions: ["canAccessComponent"],
+        });
+        await newUser.save();
+        console.log('Novo usuário registrado:', newUser);
+      } else {
+        console.log('Usuário já registrado:', existingUser);
+      }
+
+      return true;
+    },
+  
+}});
+
