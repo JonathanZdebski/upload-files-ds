@@ -93,16 +93,16 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <head>
+      <header>
         <PageTitle
           title="Upload Files DS - Quick and Secure File Transfers"
           description="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
         />
-      </head>
+      </header>
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
-          <h1 style={{ fontSize: "20px" }}>
+          <h1 style={{ fontSize: "20px", textAlign: "center" }}>
             Upload Multi Files (IMG, PDFs, Docs, Videos)
           </h1>
 
@@ -112,7 +112,6 @@ export default function Page() {
           <p style={{ textAlign: "center" }}>
             <strong>Unlimited Uploads.</strong>
           </p>
-          <br />
         </div>
         <ToastContainer
           position="top-right"

@@ -78,61 +78,66 @@
 
   }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
 
-  .container{
-    margin-bottom: 20rem;
-    margin-left: 0;
-    
-  }
-
-  .containerquadrado {
-    padding: 0 2rem;
-  }
-
-  .quadradoone, .quadradotwo, .quadradothree {
-    width: 100%;
-
-  }
-
-  .contentp {
-    max-width: 100%; 
-    margin-left: 0; 
-    background-color: aliceblue;
-
-  }
-
-  .quadradointerno p {
-    width: 65%;
-  }
-
-
-  .pa, .contactinfo {
-    font-size: 16px;
-    margin-left: 2rem;
-  }
-
-  .quadradointerno Img {
-    margin-right: 32rem;
-
-  }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Centraliza os itens horizontalmente */
+      align-items: center; /* Centraliza os itens verticalmente */
+      margin-bottom: 20rem;
+      margin-left: 0;
+    }
   
-.quadradoone{
-  align-items: center;
-
-  }
-
+    .containerquadrado {
+      padding: 0 2rem;
+    }
+  
+    .quadradoone, .quadradotwo, .quadradothree {
+      width: 100%;
+      display: flex; /* Aplica flexbox aos quadrados */
+      flex-direction: column; /* Organiza os itens dos quadrados em coluna */
+      align-items: center; /* Centraliza os itens dentro dos quadrados horizontalmente */
+    }
+  
+    .contentp {
+      max-width: 100%; 
+      margin-left: 0; 
+      background-color: aliceblue;
+      border-radius: 10px; /* Adiciona bordas arredondadas */
+      padding: 0.5rem; /* Adiciona um pouco de preenchimento interno */
+      background-color: rgba(240, 248, 255, 0.01); /* Atualiza a cor de fundo para uma versão mais transparente */
+    }
+  
+    .quadradointerno p {
+      width: 65%;
+    }
+  
+    .pa, .contactinfo {
+      font-size: 16px;
+      margin-left: 2rem;
+    }
+  
+    .quadradointerno img {
+      margin-right: 32rem;
+      
+    }
+    
+    .quadradoone {
+      align-items: center;
+    }
+  
     .pa, .contactinfo {
       font-size: 14px; 
     }
-  
+    
     .title {
       font-size: 1.4rem;
       margin-top: 1rem; 
       margin-left: 0;
       margin-bottom: 0;
     }
-  
+    
     .contentp {
       border-radius: 10px; 
       padding: 0.5rem; 
@@ -140,6 +145,3 @@
     }
   }
   
-
-
-

@@ -13,6 +13,7 @@ import Head from "next/head";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import PageTitle from "./Components/PageTitle";
+import { Metadata } from "next";
 
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -36,12 +37,11 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <head>
-        <PageTitle
-          title="Upload Files DS - Effortless and Secure File Sharing"
-          description="Share your files, photos, and videos worldwide with ease and security. No account needed. Start sharing today for free."
-        />
-      </head>
+      <title>Upload Files DS - Effortless and Secure File Sharing</title>
+      <meta
+        name="description"
+        content="Share your files, photos, and videos worldwide with ease and security. No account needed. Start sharing today for free."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
