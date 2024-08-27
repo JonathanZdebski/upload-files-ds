@@ -17,19 +17,6 @@ import Footer from "../Components/Footer";
 import Head from "next/head";
 
 export default function Page() {
-  const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    const expectedPassword = process.env.NEXT_PUBLIC_PASSWORD;
-    if (password === expectedPassword) {
-      setIsLoggedIn(true);
-      alert("Access granted!");
-    } else {
-      alert("Incorrect password!");
-    }
-  };
-
   const [fileStates, setFileStates] = useState<FileState[]>([]);
   const [uploadedFiles, setUploadedFiles] = useState<
     { url: string; name: string }[]
@@ -81,10 +68,12 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <PageTitle
-        title="Upload Files DS - Fast and Secure File Transfer Without an Account"
-        description="Simply select your files to upload or drag and drop them directly into your browser."
-      />
+      <head>
+        <PageTitle
+          title="Upload Files DS - Fast and Secure File Transfer Without an Account"
+          description="Simply select your files to upload or drag and drop them directly into your browser."
+        />
+      </head>
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
 

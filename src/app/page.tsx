@@ -36,10 +36,12 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <PageTitle
-        title="Upload Files DS - Effortless and Secure File Sharing"
-        description="Share your files, photos, and videos worldwide with ease and security. No account needed. Start sharing today for free."
-      />
+      <head>
+        <PageTitle
+          title="Upload Files DS - Effortless and Secure File Sharing"
+          description="Share your files, photos, and videos worldwide with ease and security. No account needed. Start sharing today for free."
+        />
+      </head>
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>

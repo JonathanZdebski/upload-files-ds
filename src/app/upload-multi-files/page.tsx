@@ -27,6 +27,7 @@ export default function Page() {
     if (password === PASSWORD) {
       setIsLoggedIn(true);
       toast.success("Access granted!");
+      localStorage.setItem("savedPassword", password);
     } else {
       toast.error("Incorrect password!");
     }
@@ -81,14 +82,23 @@ export default function Page() {
     console.log(`Espaço total utilizado: ${totalUsedSpace} MB`);
   }, [fileStates]);
 
+  useEffect(() => {
+    // Carregar a senha do localStorage quando o componente é montado
+    const savedPassword = localStorage.getItem("savedPassword");
+    if (savedPassword) {
+      setPassword(savedPassword);
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
-
-      <PageTitle
-        title="Upload Files DS - Quick and Secure File Transfers"
-        description="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
-      />
+      <head>
+        <PageTitle
+          title="Upload Files DS - Quick and Secure File Transfers"
+          description="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
+        />
+      </head>
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
@@ -131,10 +141,13 @@ export default function Page() {
               <div className={styles.containerlogin}>
                 <h1>Multi-File Login Access</h1>
                 <input
+                  id="password"
+                  name="password"
                   type="password"
                   placeholder="Enter the password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
                       handleLogin();
