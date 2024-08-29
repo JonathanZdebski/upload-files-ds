@@ -17,22 +17,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { useSession } from "next-auth/react";
+import Checkout from "../Components/checkout";
+import ProtectedWrapper from "@/app/protected/ProtectedWrapper";
+import Image from "next/image";
 
 export default function Page() {
-  const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    const PASSWORD = process.env.NEXT_PUBLIC_PASSWORD;
-    if (password === PASSWORD) {
-      setIsLoggedIn(true);
-      toast.success("Access granted!");
-      localStorage.setItem("savedPassword", password);
-    } else {
-      toast.error("Incorrect password!");
-    }
-  };
-
   const [fileStates, setFileStates] = useState<FileState[]>([]);
   const [uploadedFiles, setUploadedFiles] = useState<
     { url: string; name: string }[]
@@ -41,6 +30,8 @@ export default function Page() {
   const [showReloadButton, setShowReloadButton] = useState(false);
   const { edgestore } = useEdgeStore();
   const { data: session } = useSession();
+  const [showImage, setShowImage] = useState(true);
+  const [hasAccessedProtected, setHasAccessedProtected] = useState(false);
 
   function updateFileProgress(key: string, progress: FileState["progress"]) {
     setFileStates((fileStates) => {
@@ -83,12 +74,17 @@ export default function Page() {
   }, [fileStates]);
 
   useEffect(() => {
-    // Carregar a senha do localStorage quando o componente é montado
-    const savedPassword = localStorage.getItem("savedPassword");
-    if (savedPassword) {
-      setPassword(savedPassword);
+    if (hasAccessedProtected) {
+      setShowImage(false);
     }
-  }, []);
+  }, [hasAccessedProtected, session]);
+
+  // Mover a verificação de acesso protegido para um useEffect
+  useEffect(() => {
+    if (session && !hasAccessedProtected) {
+      setHasAccessedProtected(true);
+    }
+  }, [session, hasAccessedProtected]);
 
   return (
     <>
@@ -113,6 +109,15 @@ export default function Page() {
             <strong>Unlimited Uploads.</strong>
           </p>
         </div>
+        {showImage && (
+          <Image
+            className="mt-6 rounded-2xl"
+            src="/primg.png"
+            width={900}
+            height={900}
+            alt="secure payment"
+          />
+        )}
         <ToastContainer
           position="top-right"
           autoClose={3000}
@@ -127,8 +132,6 @@ export default function Page() {
 
         {!session ? (
           <div className={styles.containerlogin}>
-            <h1>Multi-File Login Access</h1>
-
             <button className={styles.button}>
               <Link href="/login">Sign in with Google</Link>
             </button>
@@ -136,45 +139,17 @@ export default function Page() {
           </div>
         ) : (
           <>
-            {!isLoggedIn ? (
-              <div className={styles.containerlogin}>
-                <h1>Multi-File Login Access</h1>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Enter the password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="current-password"
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      handleLogin();
-                    }
-                  }}
-                  className={styles.inputField}
-                />
-                <button onClick={handleLogin} className={styles.button}>
-                  Login
-                </button>
-                <Link
-                  href="https://buy.stripe.com/00gbMJ1HF3dT4KYfYZ"
-                  passHref
-                  target="_blank"
-                >
-                  <button className={styles.button}>
-                    <img
-                      src="crown.png"
-                      alt="Vip"
-                      width="30"
-                      height="30"
-                      style={{ display: "inline-block", marginRight: "10px" }}
-                    />
-                    Get Access Key
-                  </button>
-                </Link>
-              </div>
-            ) : (
+            <h1
+              style={{
+                fontSize: "1.3rem",
+                marginBottom: "0.5rem",
+                marginTop: "1.3rem",
+              }}
+            >
+              Multi-File Access
+            </h1>
+            <ProtectedWrapper>
+              <div className={styles.containerlogin}></div>
               <>
                 <MultiFileDropzone
                   value={fileStates}
@@ -229,7 +204,6 @@ export default function Page() {
                     }
                   }}
                 />
-
                 {uploadedFiles.map((fileInfo, index) => (
                   <div key={index}>
                     <Link
@@ -258,8 +232,9 @@ export default function Page() {
                 <div className={styles.share}>
                   <p>Fast link compartment</p>
                 </div>
+                {!hasAccessedProtected && setHasAccessedProtected(true)}
               </>
-            )}
+            </ProtectedWrapper>
           </>
         )}
         <div className={styles.mbcontent}>

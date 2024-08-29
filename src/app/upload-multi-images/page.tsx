@@ -68,12 +68,13 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <header>
-        <PageTitle
-          title="Upload Files DS - Fast and Secure File Transfer Without an Account"
-          description="Simply select your files to upload or drag and drop them directly into your browser."
-        />
-      </header>
+      <title>
+        Upload Files DS - Fast and Secure File Transfer Without an Account
+      </title>
+      <meta
+        name="description"
+        content="Simply select your files to upload or drag and drop them directly into your browser."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
 

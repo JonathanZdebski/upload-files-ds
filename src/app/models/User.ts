@@ -4,11 +4,9 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   image: String,
-  permissions: [String],
-  
+  hasPaid: { type: Boolean, default: false }, // Campo para verificar pagamento
 }, { timestamps: true });
 
-// Log para depuração
 console.log('Mongoose models:', mongoose.models);
 
 const User = mongoose.models?.User || mongoose.model('User', userSchema);
