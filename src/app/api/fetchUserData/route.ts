@@ -1,6 +1,5 @@
-// src/pages/api/fetchUserData.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient } from 'mongodb';
+import { NextResponse } from 'next/server';
 
 const MONGO_URI = process.env.MONGODB_URI;
 
@@ -16,17 +15,18 @@ const fetchUserData = async (email: string) => {
   return user;
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { email } = req.query;
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const email = searchParams.get('email');
 
   if (typeof email !== 'string') {
-    return res.status(400).json({ error: 'Invalid email' });
+    return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
   }
 
   try {
     const user = await fetchUserData(email);
-    res.status(200).json(user);
+    return NextResponse.json(user);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

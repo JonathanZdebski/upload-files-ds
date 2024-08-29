@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { v4 as uuidv4 } from "uuid"; // Importar a função UUID
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-06-20",
@@ -7,8 +8,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: Request) {
   try {
+    const customSessionId = uuidv4();
+
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"], // "google_pay" e "apple_pay" são suportados automaticamente via Stripe.js
+      payment_method_types: ["card"],
       line_items: [
         {
           price_data: {
@@ -20,19 +23,24 @@ export async function POST(req: Request) {
               images: ["https://uploadfilesds.vercel.app/file-lock.png"],
             },
             recurring: {
-              interval: "month", // Recorrência mensal
+              interval: "month",
             },
-            unit_amount: 199, // $1.99 em centavos
+            unit_amount: 199,
           },
           quantity: 1,
         },
       ],
-      mode: "subscription", // Modo de assinatura
-      success_url: `${req.headers.get("origin")}/success?session_id={ }`,
+      mode: "subscription",
+      success_url: `${req.headers.get(
+        "origin"
+      )}/success?session_id={CHECKOUT_SESSION_ID}&custom_session_id=${customSessionId}`,
       cancel_url: `${req.headers.get("origin")}/canceled`,
     });
 
-    return NextResponse.json({ id: session.id });
+    return NextResponse.json({
+      id: session.id,
+      custom_session_id: customSessionId,
+    });
   } catch (error) {
     console.error("Error creating checkout session:", error);
     return NextResponse.error();
