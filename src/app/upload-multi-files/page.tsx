@@ -241,7 +241,7 @@ export default function Page() {
                 <button className={styles.button}>
                   <Link
                     target="_blank"
-                    href="https://billing.stripe.com/p/login/test_14keXa3qdd3PcCI5kk"
+                    href="https://billing.stripe.com/p/login/9AQ8xm5gn09keR2288"
                     className="flex items-center space-x-2"
                   >
                     <Image
