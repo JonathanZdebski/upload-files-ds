@@ -59,15 +59,21 @@ export default function Checkout() {
         height={900}
         alt="secure payment"
       />
-      <div className="mt-6">
+      <div className="mt-6 ">
         {error && <p style={{ color: "red" }}>{error}</p>}
         <button
-          className={styles.button}
+          className={`${styles.button} flex items-center space-x-2`}
           role="link"
           onClick={handleCheckout}
           disabled={loading}
         >
-          {loading ? "Loading..." : "Get Access"}
+          <Image
+            src="/passwordd.png"
+            alt="Dashboard Icon"
+            width={30}
+            height={30}
+          />
+          <span>{loading ? "Loading..." : "Get Access"}</span>
         </button>
       </div>
     </div>

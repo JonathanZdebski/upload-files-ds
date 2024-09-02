@@ -129,21 +129,26 @@ export default function Page() {
           draggable
           pauseOnHover
         />
-
         {!session ? (
           <div className={styles.containerlogin}>
-            <button className={styles.button}>
+            <button className={`${styles.button} flex items-center space-x-2`}>
+              <Image
+                src="/logo.png"
+                alt="Dashboard Icon"
+                width={24}
+                height={24}
+              />
               <Link href="/login">Sign in with Google</Link>
             </button>
-            <p>Log in to access Multi Files Upload.</p>
+            <p className="mt-2">Log in to access Multi Files Upload.</p>
           </div>
         ) : (
           <>
             <h1
               style={{
-                fontSize: "1.3rem",
-                marginBottom: "0.5rem",
-                marginTop: "1.3rem",
+                fontSize: "1.2rem",
+                marginBottom: "0.1rem",
+                marginTop: "1.1rem",
               }}
             >
               Multi-File Access
@@ -162,7 +167,6 @@ export default function Page() {
                       alert("");
                       return;
                     }
-
                     if (currentFiles + addedFiles.length <= 5) {
                       setFileStates([...fileStates, ...addedFiles]);
                       setCurrentFiles(currentFiles + addedFiles.length);
@@ -217,7 +221,6 @@ export default function Page() {
                     <br />
                   </div>
                 ))}
-
                 {showReloadButton && (
                   <div className={styles.marginbtn}>
                     <button
@@ -234,6 +237,23 @@ export default function Page() {
                 </div>
                 {!hasAccessedProtected && setHasAccessedProtected(true)}
               </>
+              <div className="mt-2">
+                <button className={styles.button}>
+                  <Link
+                    target="_blank"
+                    href="https://billing.stripe.com/p/login/test_14keXa3qdd3PcCI5kk"
+                    className="flex items-center space-x-2"
+                  >
+                    <Image
+                      src="/dashboard.png"
+                      alt="Dashboard Icon"
+                      width={24}
+                      height={24}
+                    />
+                    <span>Subscription Dashboard</span>
+                  </Link>
+                </button>
+              </div>
             </ProtectedWrapper>
           </>
         )}

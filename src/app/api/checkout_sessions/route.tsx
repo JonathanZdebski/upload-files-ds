@@ -17,7 +17,7 @@ export async function POST(req: Request) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Sign up Upload Multi Files (IMG, PDF, Documents, Videos)",
+              name: "Upload Multi Files (IMG, PDF, Documents, Videos)",
               description:
                 "Discover the benefits of securely keeping your cloud files up-to-date and quickly sharing them. Your files are permanently saved in the cloud, with unlimited uploads.",
               images: ["https://uploadfilesds.vercel.app/file-lock.png"],
