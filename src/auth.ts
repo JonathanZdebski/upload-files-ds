@@ -34,7 +34,7 @@ export const {
           name: user.name,
           email: user.email,
           image: user.image,
-          permissions: ["canAccessComponent"],
+          permissions: ["canAccessComponent"],  
         });
         await newUser.save();
         console.log('Novo usuário registrado:', newUser);
