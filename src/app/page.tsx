@@ -12,8 +12,8 @@ import Link from "next/link";
 import Head from "next/head";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import PageTitle from "./Components/PageTitle";
-import { Metadata } from "next";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Page = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -33,6 +33,10 @@ const Page = () => {
   const reloadPage = () => {
     window.location.reload();
   };
+
+  function handleCopy() {
+    toast.success("Image URL copied!");
+  }
 
   return (
     <>
@@ -97,34 +101,37 @@ const Page = () => {
         >
           Upload
         </button>
+        <span className="mb-3"></span>
         {urls?.url && (
-          <>
-            <Link className={styles.buttonTwo} href={urls.url} target="_blank">
-              Open Image
-            </Link>
-            <CopyToClipboard
-              text={urls.url}
-              onCopy={() => alert("URL copied!")}
-            >
-              <button className={styles.buttonTwo}>Copy Image Link</button>
-            </CopyToClipboard>
-          </>
+          <div className="flex items-center space-x- pb-4 border-b border-gray-500">
+            <button className="bg-blue-500 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+              <Link href={urls.url} target="_blank">
+                Open Image
+              </Link>
+            </button>
+
+            <button className="bg-blue-900 ml-5 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+              <ToastContainer />
+              <CopyToClipboard text={urls.url} onCopy={handleCopy}>
+                <button>Copy</button>
+              </CopyToClipboard>
+            </button>
+          </div>
         )}
         {urls?.thumbnailUrl && (
           <>
-            <Link
-              className={styles.buttonTwo}
-              href={urls.thumbnailUrl}
-              target="_blank"
-            >
-              Create Thumbnail
-            </Link>
-            <CopyToClipboard
-              text={urls.thumbnailUrl}
-              onCopy={() => alert("Thumbnail URL copied!")}
-            >
-              <button className={styles.buttonTwo}>Copy Image Link</button>
-            </CopyToClipboard>
+            <div className="flex items-center space-x-4 mb-4 pb-4 border-b border-gray-500">
+              <button className="bg-blue-500 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+                <Link href={urls.thumbnailUrl} target="_blank">
+                  Create Thumbnail
+                </Link>
+              </button>
+              <CopyToClipboard text={urls.thumbnailUrl} onCopy={handleCopy}>
+                <button className="bg-blue-900 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300 m-3">
+                  Copy
+                </button>
+              </CopyToClipboard>
+            </div>
             <button className={styles.buttonThree} onClick={reloadPage}>
               Upload New Files
             </button>

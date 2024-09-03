@@ -30,7 +30,7 @@ const edgeStoreRouter = es.router({
     .path(({input}) => [{type: input.type}]),
     
     myMultiFiles: es.fileBucket({
-        maxSize: 1024 * 1024 * 2,
+        maxSize: 100 * 1024 * 1024,
     }),
 
 

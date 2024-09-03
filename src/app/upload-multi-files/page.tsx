@@ -11,6 +11,7 @@ import UploadOptions from "../Components/UploadOptions";
 import styles from "../styles/button.module.css";
 import Sharesm from "../Components/sharesm";
 import { useState, useEffect } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
 import PageTitle from "../Components/PageTitle";
 import "react-toastify/dist/ReactToastify.css";
@@ -85,6 +86,10 @@ export default function Page() {
       setHasAccessedProtected(true);
     }
   }, [session, hasAccessedProtected]);
+
+  const handleCopy = () => {
+    toast.success("Image URL copied!");
+  };
 
   return (
     <>
@@ -208,27 +213,39 @@ export default function Page() {
                     }
                   }}
                 />
+                <span className="mb-1"></span>
                 {uploadedFiles.map((fileInfo, index) => (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    className="flex items-center space-x-4 mb-4 pb-4 border-b border-gray-500"
+                  >
                     <Link
-                      className={styles.buttonTwo}
+                      className="flex-1 hover:underline"
                       href={fileInfo.url}
                       target="_blank"
                     >
-                      <strong>Open File {index + 1}:</strong>{" "}
-                      <span>{fileInfo.name}</span>
+                      <button className="bg-blue-500 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+                        <strong>Open</strong>
+                        <span className="ml-1">{fileInfo.name}</span>
+                      </button>
                     </Link>
-                    <br />
+                    <CopyToClipboard text={fileInfo.url} onCopy={handleCopy}>
+                      <button className="bg-blue-900 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+                        <strong>Copy</strong>
+                      </button>
+                    </CopyToClipboard>
                   </div>
                 ))}
                 {showReloadButton && (
                   <div className={styles.marginbtn}>
-                    <button
-                      className={styles.buttonThree}
-                      onClick={navegarParaPagina}
-                    >
-                      Upload New Files
-                    </button>
+                    <Link href="/upload-multi-files">
+                      <button
+                        className={styles.buttonThree}
+                        onClick={navegarParaPagina}
+                      >
+                        Upload New Files
+                      </button>
+                    </Link>
                   </div>
                 )}
                 <Sharesm />

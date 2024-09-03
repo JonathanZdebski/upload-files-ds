@@ -14,11 +14,11 @@ import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 
 const variants = {
-  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[-200rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl",
+  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[-200rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl mb-3",
   active: "border-2",
   disabled:
-    "bg-gray-200 border-gray-300 cursor-default pointer-events-none bg-opacity-30 dark:bg-gray-700 dark:border-gray-600",
-  accept: "border border-blue-500 bg-blue-500 bg-opacity-10",
+    "bg-gray-200 border-gray-300 cursor-default pointer-events-none bg-opacity-30 dark:bg-gray-700 dark:border-gray-600 ",
+  accept: "border border-blue-500 bg-blue-500 bg-opacity-10 ",
   reject: "border border-red-700 bg-red-700 bg-opacity-10",
 };
 
@@ -186,9 +186,9 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
               key={i}
               className="flex h-16 w-full flex-col justify-center rounded border border-gray-300 px-4 py-2"
             >
-              <div className="flex items-center gap-2 text-gray-500 dark:text-white">
+              <div className="flex items-center gap-2 text-gray-500 dark:text-white ">
                 <FileIcon size="30" className="shrink-0" />
-                <div className="min-w-0 text-sm">
+                <div className="min-w-0 text-sm ">
                   <div className="overflow-hidden overflow-ellipsis whitespace-nowrap">
                     {file.name}
                   </div>
@@ -197,7 +197,7 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                   </div>
                 </div>
                 <div className="grow" />
-                <div className="flex w-12 justify-end text-xs">
+                <div className="flex w-12 justify-end text-xs ">
                   {progress === "PENDING" ? (
                     <button
                       type="button"
@@ -213,7 +213,7 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                   ) : progress === "ERROR" ? (
                     <LucideFileWarning className="shrink-0 text-red-600 dark:text-red-400" />
                   ) : progress !== "COMPLETE" ? (
-                    <div className="flex flex-col items-end gap-0.5">
+                    <div className="flex flex-col items-end gap-0.5 ">
                       {abortController && (
                         <button
                           type="button"
@@ -235,10 +235,10 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
               </div>
               {/* Progress Bar */}
               {typeof progress === "number" && (
-                <div className="relative h-0">
+                <div className="relative h-0 ">
                   <div className="absolute top-1 h-1 w-full overflow-clip rounded-full bg-gray-200 dark:bg-gray-700">
                     <div
-                      className="h-full bg-gray-400 transition-all duration-300 ease-in-out dark:bg-white"
+                      className="h-full bg-gray-400 transition-all duration-300 ease-in-out dark:bg-white "
                       style={{
                         width: progress ? `${progress}%` : "0%",
                       }}

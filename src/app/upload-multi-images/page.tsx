@@ -15,6 +15,9 @@ import PageTitle from "../Components/PageTitle";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Head from "next/head";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Ensure you import the CSS for toastify
 
 export default function Page() {
   const [fileStates, setFileStates] = useState<FileState[]>([]);
@@ -64,6 +67,10 @@ export default function Page() {
     const totalUsedSpace = calculateTotalFileSize(fileStates);
     console.log(`Espaço total utilizado: ${totalUsedSpace} MB`);
   }, [fileStates]);
+
+  const handleCopy = () => {
+    toast.success("Image URL copied!");
+  };
 
   return (
     <>
@@ -137,17 +144,27 @@ export default function Page() {
             }}
           />
 
+          <span className="mb-1"></span>
           {uploadedFiles.map((fileInfo, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="flex items-center space-x-4 mb-4 pb-4 border-b border-gray-500"
+            >
               <Link
-                className={styles.buttonTwo}
+                className="flex-1 hover:underline"
                 href={fileInfo.url}
                 target="_blank"
               >
-                <strong>Open File {index + 1}:</strong>{" "}
-                <span>{fileInfo.name}</span>
+                <button className="bg-blue-500 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+                  <strong>Open</strong>
+                  <span className="ml-1">{fileInfo.name}</span>
+                </button>
               </Link>
-              <br />
+              <CopyToClipboard text={fileInfo.url} onCopy={handleCopy}>
+                <button className="bg-blue-900 text-white px-4 py-1 rounded-xl hover:bg-blue-600 transition duration-300">
+                  <strong>Copy</strong>
+                </button>
+              </CopyToClipboard>
             </div>
           ))}
 
@@ -172,6 +189,7 @@ export default function Page() {
         </div>
       </div>
       <Footer />
+      <ToastContainer />
     </>
   );
 }
