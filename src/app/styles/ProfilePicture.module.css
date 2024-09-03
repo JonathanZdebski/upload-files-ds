@@ -11,3 +11,12 @@
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 
               0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+/* Adiciona estilos responsivos para dispositivos móveis */
+@media (max-width: 768px) {
+  .profilepicture {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+}

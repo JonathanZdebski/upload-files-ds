@@ -1,22 +1,21 @@
 import React from "react";
 import Image from "next/image";
-import styles from "../styles/Content.module.css";
 
 const contactinfo = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.containerquadrado}>
-        <div className={styles.quadradointerno}>
+    <div className="p-5 rounded-lg shadow-md max-w-7xl mx-auto mt-10">
+      <div className="grid grid-cols-1 gap-5 mt-10 md:grid-cols-1">
+        <div className="flex justify-center items-center">
           <Image
             src="/chat.png"
             width={150}
             height={150}
             alt="Picture of Contact"
-            style={{ marginLeft: "20rem" }}
+            className="mx-auto"
           />
         </div>
         <div>
-          <p className={styles.contactinfo}>
+          <p className="text-base md:text-lg leading-6">
             Offering suggestions to Upload Files DS enhances the cloud storage
             and sharing experience for all users by contributing to
             improvements. This platform prioritizes security, encrypting all

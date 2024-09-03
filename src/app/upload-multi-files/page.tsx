@@ -172,7 +172,7 @@ export default function Page() {
                       alert("");
                       return;
                     }
-                    if (currentFiles + addedFiles.length <= 5) {
+                    if (currentFiles + addedFiles.length <= 10) {
                       setFileStates([...fileStates, ...addedFiles]);
                       setCurrentFiles(currentFiles + addedFiles.length);
                       await Promise.all(
@@ -209,7 +209,7 @@ export default function Page() {
                         })
                       );
                     } else {
-                      alert("File limit reached: 5 files.");
+                      alert("File limit reached: 10 files.");
                     }
                   }}
                 />

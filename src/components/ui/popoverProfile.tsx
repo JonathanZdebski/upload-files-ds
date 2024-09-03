@@ -1,17 +1,9 @@
 import React from "react";
-import Link from "next/link";
-import styles from "../styles/Navbar.module.css";
-import { signOut } from "@/auth";
-import { useRouter } from "next/navigation"; // Corrigindo a importação do useRouter
 import { useState } from "react";
 import LogoutButton from "../../app/Components/ui/LogoutButton";
 import Header from "../../app/Components/ui/ProfilePicture";
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
 
 const popoverProfile = () => {
@@ -19,7 +11,7 @@ const popoverProfile = () => {
   const { data: session, status } = useSession();
 
   if (!session) {
-    return null; // Ou exiba um ícone de usuário genérico
+    return null;
   }
 
   return (
