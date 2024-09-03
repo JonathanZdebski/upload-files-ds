@@ -12,6 +12,7 @@ import {
 import * as React from "react";
 import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
+import Image from "next/image";
 
 const variants = {
   base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-full sm:min-w-[40rem] md:min-w-[50rem] lg:min-w-[70rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl",
@@ -188,7 +189,13 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
               className="flex h-16 w-full flex-col justify-center rounded border border-gray-300 px-2 py-1 sm:px-4 sm:py-2"
             >
               <div className="flex items-center gap-2 text-gray-500 dark:text-white">
-                <FileIcon size="25" className="shrink-0" />
+                <Image
+                  src="/google-docs.png" // Substitua pelo caminho da sua imagem
+                  alt="Check Circle"
+                  width={25}
+                  height={25}
+                  className="shrink-0 text-green-600 dark:text-gray-400"
+                />
                 <div className="min-w-0 text-xs sm:text-sm">
                   <div className="overflow-hidden overflow-ellipsis whitespace-nowrap">
                     {file.name}
@@ -221,7 +228,7 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                       {abortController && (
                         <button
                           type="button"
-                          className="rounded-md p-0.5 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          className="rounded-md p-0.5 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-950"
                           disabled={progress === 100}
                           onClick={() => {
                             abortController.abort();
@@ -236,8 +243,11 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                       <div>{Math.round(progress)}%</div>
                     </div>
                   ) : (
-                    <CheckCircleIcon
-                      size="25"
+                    <Image
+                      src="/check-mark.png" // Substitua pelo caminho da sua imagem
+                      alt="Check Circle"
+                      width={25}
+                      height={25}
                       className="shrink-0 text-green-600 dark:text-gray-400"
                     />
                   )}
