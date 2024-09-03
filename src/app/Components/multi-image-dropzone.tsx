@@ -14,7 +14,7 @@ import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 
 const variants = {
-  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-full md:min-w-[50rem] lg:min-w-[50rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl",
+  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-full sm:min-w-[40rem] md:min-w-[50rem] lg:min-w-[70rem] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out hover:bg-gray-300 dark:hover:bg-gray-700 hover:bg-opacity-5 rounded-xl",
   active: "border-2",
   disabled:
     "bg-gray-200 border-gray-300 cursor-default pointer-events-none bg-opacity-30 dark:bg-gray-700 dark:border-gray-600",
@@ -70,6 +70,7 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
     if (dropzoneOptions?.maxFiles && value?.length) {
       disabled = disabled ?? value.length >= dropzoneOptions.maxFiles;
     }
+
     // dropzone configuration
     const {
       getRootProps,
@@ -150,7 +151,7 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
     }, [fileRejections, dropzoneOptions]);
 
     return (
-      <div className="min-w-[70rem]">
+      <div className="min-w-full sm:min-w-[35rem] md:min-w-[40rem] lg:min-w-[50rem]">
         <div className="flex w-full flex-col gap-2">
           <div className="w-full">
             {/* Main File Input */}
@@ -166,10 +167,10 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                   alt="Vip"
                   width="35"
                   height="35"
-                  style={{ marginRight: "" }}
+                  className="mb-2"
                 />
                 <div className="text-gray-400">
-                  drag & drop or click to upload
+                  Drag & drop or click to upload
                 </div>
               </div>
             </div>
@@ -184,11 +185,11 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
           {value?.map(({ file, abortController, progress }, i) => (
             <div
               key={i}
-              className="flex h-16 w-full flex-col justify-center rounded border border-gray-300 px-4 py-2"
+              className="flex h-16 w-full flex-col justify-center rounded border border-gray-300 px-2 py-1 sm:px-4 sm:py-2"
             >
               <div className="flex items-center gap-2 text-gray-500 dark:text-white">
-                <FileIcon size="30" className="shrink-0" />
-                <div className="min-w-0 text-sm">
+                <FileIcon size="25" className="shrink-0" />
+                <div className="min-w-0 text-xs sm:text-sm">
                   <div className="overflow-hidden overflow-ellipsis whitespace-nowrap">
                     {file.name}
                   </div>
@@ -197,21 +198,24 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                   </div>
                 </div>
                 <div className="grow" />
-                <div className="flex w-12 justify-end text-xs">
+                <div className="flex w-8 justify-end text-xs sm:w-12">
                   {progress === "PENDING" ? (
                     <button
                       type="button"
-                      className="rounded-md p-1 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="rounded-md p-0.5 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                       onClick={() => {
                         void onChange?.(
                           value.filter((_, index) => index !== i)
                         );
                       }}
                     >
-                      <Trash2Icon className="shrink-0" />
+                      <Trash2Icon size="25" className="shrink-0" />
                     </button>
                   ) : progress === "ERROR" ? (
-                    <LucideFileWarning className="shrink-0 text-red-600 dark:text-red-400" />
+                    <LucideFileWarning
+                      className="shrink-0 text-red-600 dark:text-red-400"
+                      size=""
+                    />
                   ) : progress !== "COMPLETE" ? (
                     <div className="flex flex-col items-end gap-0.5">
                       {abortController && (
@@ -223,20 +227,26 @@ const MultiFileDropzone = React.forwardRef<HTMLInputElement, InputProps>(
                             abortController.abort();
                           }}
                         >
-                          <XIcon className="h-4 w-4 shrink-0 text-gray-400 dark:text-gray-400" />
+                          <XIcon
+                            size="25"
+                            className="h-4 w-4 shrink-0 text-gray-400 dark:text-gray-400"
+                          />
                         </button>
                       )}
                       <div>{Math.round(progress)}%</div>
                     </div>
                   ) : (
-                    <CheckCircleIcon className="shrink-0 text-green-600 dark:text-gray-400" />
+                    <CheckCircleIcon
+                      size="25"
+                      className="shrink-0 text-green-600 dark:text-gray-400"
+                    />
                   )}
                 </div>
               </div>
               {/* Progress Bar */}
               {typeof progress === "number" && (
-                <div className="relative h-0">
-                  <div className="absolute top-1 h-1 w-full overflow-clip rounded-full bg-gray-200 dark:bg-gray-700">
+                <div className="relative h-1 mt-1">
+                  <div className="absolute top-0 h-full w-full overflow-clip rounded-full bg-gray-200 dark:bg-gray-700">
                     <div
                       className="h-full bg-gray-400 transition-all duration-300 ease-in-out dark:bg-white"
                       style={{
