@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { EdgeStoreProvider } from "./lib/edgestore";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import CanonicalUrl from "../app/Components/CanonicalUrl"; // Importa o novo componente
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +21,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="3mg8IPuMGjOLro9QMP9qNIxJpQEbP8YPjC_NrLSIK_Q"
         />
+        <CanonicalUrl />
         <Script
           id="gtm"
           strategy="afterInteractive"
