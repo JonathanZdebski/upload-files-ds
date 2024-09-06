@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const useUpdatePaymentStatus = (successUrl: string) => {
+const useUpdatePaymentStatus = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -41,11 +41,11 @@ const useUpdatePaymentStatus = (successUrl: string) => {
     updatePaymentStatus();
 
     const timer = setTimeout(() => {
-      router.push(successUrl);
-    }, 0);
+      router.push("/success"); // Redireciona para a página de sucesso
+    }, 100); // Meio segundo (500 milissegundos) para redirecionar
 
     return () => clearTimeout(timer);
-  }, [router, successUrl]);
+  }, [router]);
 };
 
 export default useUpdatePaymentStatus;
