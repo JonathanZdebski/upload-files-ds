@@ -1,6 +1,6 @@
+// src/hooks/useUpdatePaymentStatus.ts
 "use client";
 
-// src/hooks/useUpdatePaymentStatus.ts
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -41,11 +41,11 @@ const useUpdatePaymentStatus = (successUrl: string) => {
     updatePaymentStatus();
 
     const timer = setTimeout(() => {
-      router.push("/success");
+      router.push(successUrl);
     }, 0);
 
     return () => clearTimeout(timer);
-  }, [router]);
+  }, [router, successUrl]);
 };
 
 export default useUpdatePaymentStatus;
