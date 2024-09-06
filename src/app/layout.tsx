@@ -5,7 +5,6 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
-import CanonicalUrl from "../app/Components/CanonicalUrl"; // Importa o novo componente
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +20,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="3mg8IPuMGjOLro9QMP9qNIxJpQEbP8YPjC_NrLSIK_Q"
         />
-        <CanonicalUrl />
+        <link rel="canonical" href="https://upload-files-ds.vercel.app/" />
         <Script
           id="gtm"
           strategy="afterInteractive"
