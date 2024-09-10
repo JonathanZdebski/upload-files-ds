@@ -29,9 +29,9 @@ const useUpdatePaymentStatus = () => {
         });
 
         if (response.ok) {
-          console.log("Payment status updated successfully");
+          console.log("");
         } else {
-          console.error("Failed to update payment status");
+          console.error("");
         }
       } catch (error) {
         console.error("Error updating payment status:", error);
@@ -41,8 +41,8 @@ const useUpdatePaymentStatus = () => {
     updatePaymentStatus();
 
     const timer = setTimeout(() => {
-      router.push("/success"); // Redireciona para a página de sucesso
-    }, 100); // Meio segundo (500 milissegundos) para redirecionar
+      router.push("/success");
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [router]);

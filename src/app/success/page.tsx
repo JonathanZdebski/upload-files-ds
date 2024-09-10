@@ -14,10 +14,9 @@ const SuccessPage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/upload-multi-files"); // Redireciona após 1 segundo
-    }, 2000);
+      router.push("/upload-multi-files");
+    }, 3000);
 
-    // Limpeza do timer quando o componente desmonta
     return () => clearTimeout(timer);
   }, [router]);
 
