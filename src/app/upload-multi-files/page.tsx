@@ -18,7 +18,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { useSession } from "next-auth/react";
-import Checkout from "../Components/checkout";
 import ProtectedWrapper from "@/app/protected/ProtectedWrapper";
 import Image from "next/image";
 
@@ -59,28 +58,12 @@ export default function Page() {
     return () => clearTimeout(timer);
   }, [uploadedFiles]);
 
-  const calculateTotalFileSize = (files: string | any[]) => {
-    let totalSize = 0;
-    for (let i = 0; i < files.length; i++) {
-      totalSize += files[i].size;
-    }
-    return totalSize;
-  };
-
-  const maxAllowedSizePerUser = 15000000; // 15 MB
-
-  useEffect(() => {
-    const totalUsedSpace = calculateTotalFileSize(fileStates);
-    console.log(`Espaço total utilizado: ${totalUsedSpace} MB`);
-  }, [fileStates]);
-
   useEffect(() => {
     if (hasAccessedProtected) {
       setShowImage(false);
     }
   }, [hasAccessedProtected, session]);
 
-  // Mover a verificação de acesso protegido para um useEffect
   useEffect(() => {
     if (session && !hasAccessedProtected) {
       setHasAccessedProtected(true);
@@ -94,13 +77,16 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <head>
-        <title>Upload Files DS - Quick and Secure File Transfers</title>
-        <meta
-          name="description"
-          content="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
-        />
-      </head>
+      <Link
+        href="https://upload-files-ds.vercel.app/upload-multi-files"
+        passHref
+        rel="nofollow"
+      ></Link>
+      <title>Upload Files DS - Quick and Secure File Transfers</title>
+      <meta
+        name="description"
+        content="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
+      />
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
@@ -168,11 +154,6 @@ export default function Page() {
                     setFileStates(files);
                   }}
                   onFilesAdded={async (addedFiles) => {
-                    const totalSize = calculateTotalFileSize(addedFiles);
-                    if (totalSize > maxAllowedSizePerUser) {
-                      alert("");
-                      return;
-                    }
                     if (currentFiles + addedFiles.length <= 10) {
                       setFileStates([...fileStates, ...addedFiles]);
                       setCurrentFiles(currentFiles + addedFiles.length);
