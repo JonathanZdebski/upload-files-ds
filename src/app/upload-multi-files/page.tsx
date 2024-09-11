@@ -19,6 +19,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { useSession } from "next-auth/react";
 import ProtectedWrapper from "@/app/protected/ProtectedWrapper";
+import Head from "next/head";
 import Image from "next/image";
 
 export default function Page() {
@@ -87,12 +88,24 @@ export default function Page() {
         name="description"
         content="Simple and Secure Global File Sharing, experience seamless and secure file sharing with Upload Files DS."
       />
+      <Head>
+        <meta
+          name="keywords"
+          content="file upload, secure file transfer, multi-image upload, free upload service"
+        />
+        <meta name="author" content="Upload Files DS" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://upload-files-ds.vercel.app" />
+        <link rel="icon" href="/favicon.ico" />
+        <html lang="en" />
+      </Head>
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
         <div>
-          <h1 style={{ fontSize: "20px", textAlign: "center" }}>
+          <h2 style={{ fontSize: "20px", textAlign: "center" }}>
             Upload Multi Files (IMG, PDFs, Docs, Videos)
-          </h1>
+          </h2>
 
           <p style={{ textAlign: "center" }}>
             <strong>Your files are permanently saved in the cloud.</strong>

@@ -75,19 +75,33 @@ export default function Page() {
   return (
     <>
       <Navbar />
+
       <title>
         Upload Files DS - Fast and Secure File Transfer Without an Account
       </title>
       <meta
         name="description"
-        content="Simply select your files to upload or drag and drop them directly into your browser."
+        content="Simply select your files to upload or drag and drop them directly into your browser. Upload multiple images securely and quickly without the need for an account."
       />
+      <Head>
+        <meta
+          name="keywords"
+          content="file upload, secure file transfer, multi-image upload, free upload service"
+        />
+        <meta name="author" content="Upload Files DS" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://upload-files-ds.vercel.app" />
+        <link rel="icon" href="/favicon.ico" />
+        <html lang="en" />
+      </Head>
+
       <div className="flex flex-col items-center m-6 gap-2">
         <UploadOptions />
 
         <>
           <div>
-            <h1 style={{ fontSize: "20px" }}>Upload Multi Images</h1>
+            <h2 style={{ fontSize: "20px" }}>Upload Multi Images</h2>
 
             <p style={{ textAlign: "center" }}>Max size is 2 MB per file.</p>
             <br />
