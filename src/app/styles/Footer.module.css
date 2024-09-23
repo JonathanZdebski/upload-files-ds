@@ -12,6 +12,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  gap: 20px; 
 }
 
 .footercontainer {
@@ -19,13 +20,59 @@
   width: 100%;
   height: auto;
   display: flex;
-  gap: 40px;
   align-items: center;
-  flex-wrap: wrap;
-  
+  justify-content: center; 
 }
 
-@media (zoom: 1.5) { 
+.footerImage {
+  position: absolute;
+  right: 50px; 
+  max-width: 220px; 
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.footerImage:hover {
+  transform: scale(1.05);
+}
+
+.footerText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha o texto à esquerda */
+}
+
+.footerText {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinha o texto e os links ao centro */
+  text-align: center; /* Centraliza o texto dentro da div */
+}
+
+.footerLinks {
+  list-style-type: none; /* Remove os marcadores da lista */
+  padding: 5px; /* Remove o preenchimento padrão */
+  margin: 0; /* Remove a margem padrão */
+  display: flex; /* Alinha os links em linha */
+  gap: 15px; /* Espaçamento entre os links */
+}
+
+.footerLinks li {
+  font-size: 14px; /* Tamanho da fonte dos links */
+}
+
+.footerLinks a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: #ffffff; /* Cor dos links */
+}
+
+.footerLinks a:hover {
+  text-decoration: underline; /* Sublinha os links ao passar o mouse */
+}
+
+
+
+@media (zoom: 1.5) {
   .footer {
     position: fixed;
   }
@@ -34,15 +81,30 @@
 @media (max-width: 768px) {
   .footer {
     height: auto;
-    padding: 2rem; 
+    padding: 2rem;
     bottom: 0;
     margin-bottom: -25rem;
+    justify-content: center; /* Mantém o alinhamento no mobile */
   }
 
   .footercontainer {
-    flex-direction: column; 
+    flex-direction: column;
     text-align: center;
     gap: 20px;
     bottom: 0;
+  }
+
+  .footerImage {
+    position: static;
+    margin-top: 10px; /* Ajusta a posição da imagem no mobile */
+  }
+
+  
+}
+
+@media (max-width: 1280px) and (min-width: 720px) {
+  .footerImage {
+    max-width: 170px; /* Reduz o tamanho da imagem para essa resolução */
+    right: 40px; /* Ajusta o posicionamento da imagem */
   }
 }
