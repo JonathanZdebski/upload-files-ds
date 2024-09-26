@@ -26,6 +26,9 @@ export async function GET(request: Request, { params }: any) {
       lastLogin: user.lastLogin,
       createdAt: user.createdAt, // Adicionando createdAt
       updatedAt: user.updatedAt, // Adicionando updatedAt
+      birthDate: user.birthDate, // Adicionando birthDate
+      phoneNumber: user.phoneNumber, // Adicionando phoneNumber
+      gender: user.gender, // Adicionando gender
     };
 
     return new Response(JSON.stringify(userData), { status: 200 });
@@ -40,15 +43,15 @@ export async function PUT(request: Request, { params }: any) {
   await connectToUsersAuthenticatedDB();
 
   const { id } = params; // Certifique-se de que 'id' está definido aqui
-  const { name, email, image, location } = await request.json(); // Incluindo o campo da localização
+  const { name, email, image, location, birthDate, phoneNumber, gender } = await request.json(); // Incluindo os novos campos
 
   console.log("Atualizando usuário com ID:", id); // Log do ID que está sendo atualizado
 
   try {
-    // Atualizando o usuário com os novos dados, incluindo o campo da imagem e localização
+    // Atualizando o usuário com os novos dados, incluindo os campos adicionais
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { name, email, image, location }, // Atualizando os campos nome, email, imagem e localização
+      { name, email, image, location, birthDate, phoneNumber, gender }, // Atualizando todos os campos
       { new: true, runValidators: true }
     );
 
@@ -67,6 +70,9 @@ export async function PUT(request: Request, { params }: any) {
       lastLogin: updatedUser.lastLogin,
       createdAt: updatedUser.createdAt,
       updatedAt: updatedUser.updatedAt,
+      birthDate: updatedUser.birthDate, // Adicionando birthDate
+      phoneNumber: updatedUser.phoneNumber, // Adicionando phoneNumber
+      gender: updatedUser.gender, // Adicionando gender
     };
 
     return new Response(JSON.stringify(userData), { status: 200 });

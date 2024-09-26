@@ -6,8 +6,10 @@ const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
   image: String,
   hasPaid: { type: Boolean, default: false }, // Campo para verificar pagamento
-  location: { type: String, default: null }, // Novo campo para localização
-  lastLogin: { type: Date, default: null } // Novo campo para a data do último login
+  lastLogin: { type: Date, default: null }, // Campo para a data do último login
+  birthDate: { type: Date, default: null }, // Campo para data de nascimento
+  phoneNumber: { type: String, default: null }, // Campo para número de telefone
+  gender: { type: String, enum: ['male', 'female', 'other'], default: null } // Campo para gênero
 }, { timestamps: true });
 
 console.log('Mongoose models:', mongoose.models);

@@ -32,7 +32,11 @@ const ProtectedWrapper: React.FC<ProtectedWrapperProps> = ({ children }) => {
   }, []);
 
   if (hasAccess === null) {
-    return <div className={styles.button}>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center mt-7">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+      </div>
+    );
   }
 
   if (!hasAccess) {
