@@ -42,12 +42,11 @@ const ProfilePage = () => {
           setEmail(userData.email || session.user.email);
           setIsPremium(userData.hasPaid);
           setLocation(userData.location);
-          setLastLogin(new Date(userData.lastLogin).toLocaleString("pt-BR"));
-          setBirthDate(userData.birthDate);
+          setLastLogin(new Date(userData.lastLogin).toLocaleString("en-US"));
+          setBirthDate(new Date(userData.birthDate).toLocaleString("en-US"));
           setPhoneNumber(userData.phoneNumber);
           setGender(userData.gender);
-          setCreatedAt(new Date(userData.createdAt).toLocaleString("pt-BR"));
-          setUpdatedAt(new Date(userData.updatedAt).toLocaleString("pt-BR"));
+          setCreatedAt(new Date(userData.createdAt).toLocaleString("en-US"));
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
