@@ -4,7 +4,7 @@ import LogoutButton from "../../app/Components/ui/LogoutButton";
 import Header from "../../app/Components/ui/ProfilePicture";
 import { Popover } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
-import { FaUser } from "react-icons/fa"; // Usando ícone de usuário
+import { FaCog } from "react-icons/fa"; // Usando ícone de engrenagem
 
 const PopoverProfile = () => {
   const [data, setData] = useState(null);
@@ -17,7 +17,7 @@ const PopoverProfile = () => {
   return (
     <div>
       <Popover>
-        <h3 className="flex items-center border-b border-gray-200 pb-2 mb-2">
+        <h3 className="flex items-center border-b border-gray-200 pb-2 mb-1">
           <span className="mr-2">
             <Header />
           </span>
@@ -33,7 +33,7 @@ const PopoverProfile = () => {
         <div className="border-b border-gray-300 mb-2"></div>
 
         <div className="flex items-center mb-4">
-          <FaUser className="mr-2 text-xl text-gray-600 hover:text-blue-600 transition duration-200" />
+          <FaCog className="mr-2 text-xl text-gray-600 hover:text-blue-600 transition duration-200" />
           <a
             href="/profile"
             className="text-gray-800 hover:text-blue-600 transition duration-200 font-medium"
@@ -42,7 +42,7 @@ const PopoverProfile = () => {
           </a>
         </div>
 
-        <div className="border-b border-gray-300 mb-2"></div>
+        <div className="border-b border-gray-300"></div>
 
         <button className="border-gray-300">
           <LogoutButton />

@@ -7,32 +7,32 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { useUserStore } from "../Components/useUserStore";
 import PageTitle from "../Components/PageTitle";
+import { useRouter } from "next/navigation"; // Importar useRouter
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
   const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingImage, setIsEditingImage] = useState(false);
-  const [newImage, setNewImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isPremium, setIsPremium] = useState(false);
-  const [location, setLocation] = useState<string | null>(null); // Novo estado para localização
-  const [lastLogin, setLastLogin] = useState<string | null>(null); // Novo estado para último login
+  const [location, setLocation] = useState<string | null>(null);
+  const [lastLogin, setLastLogin] = useState<string | null>(null);
+  const [createdAt, setCreatedAt] = useState<string | null>(null);
+  const [updatedAt, setUpdatedAt] = useState<string | null>(null);
 
   const { name, setName, email, setEmail } = useUserStore();
+  const router = useRouter(); // Inicializar useRouter
+
+  const loadStoredUserData = () => {
+    const storedName = localStorage.getItem("userName");
+    const storedEmail = localStorage.getItem("userEmail");
+
+    if (storedName) setName(storedName);
+    if (storedEmail) setEmail(storedEmail);
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (session && session.user) {
-        const storedName =
-          localStorage.getItem("userName") || session.user.name || "";
-        const storedEmail =
-          localStorage.getItem("userEmail") || session.user.email || "";
-        const storedImage =
-          localStorage.getItem("userImage") || session.user.image || null;
-
-        setName(storedName);
-        setEmail(storedEmail);
-        setImagePreview(storedImage);
+        loadStoredUserData();
 
         try {
           const response = await fetch(`/api/user/${session.user.id}`);
@@ -41,9 +41,11 @@ const ProfilePage = () => {
           }
 
           const userData = await response.json();
-          setIsPremium(userData.hasPaid); // Atualiza o status premium a partir dos dados do banco
-          setLocation(userData.location); // Armazena a localização
-          setLastLogin(userData.lastLogin); // Armazena o último login
+          setIsPremium(userData.hasPaid);
+          setLocation(userData.location);
+          setLastLogin(userData.lastLogin);
+          setCreatedAt(new Date(userData.createdAt).toLocaleString("pt-BR"));
+          setUpdatedAt(new Date(userData.updatedAt).toLocaleString("pt-BR"));
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
@@ -60,20 +62,7 @@ const ProfilePage = () => {
     if (email) {
       localStorage.setItem("userEmail", email);
     }
-    if (imagePreview) {
-      localStorage.setItem("userImage", imagePreview);
-    }
-  }, [name, email, imagePreview]);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setNewImage(file);
-      const imageUrl = URL.createObjectURL(file);
-      setImagePreview(imageUrl);
-      localStorage.setItem("userImage", imageUrl);
-    }
-  };
+  }, [name, email]);
 
   const handleSaveName = async () => {
     if (!session || !session.user || !session.user.id) {
@@ -102,35 +91,6 @@ const ProfilePage = () => {
     }
   };
 
-  const handleSaveImage = async () => {
-    if (!session || !session.user || !session.user.id) {
-      console.error("Usuário não encontrado ou ID indefinido.");
-      return;
-    }
-
-    let imageUrl = imagePreview || session.user.image;
-
-    try {
-      const response = await fetch(`/api/user/${session.user.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ image: imageUrl }),
-      });
-
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(`Erro ao atualizar o usuário: ${errorMessage}`);
-      }
-
-      localStorage.setItem("userImage", imageUrl ?? "");
-      setIsEditingImage(false);
-    } catch (error) {
-      console.error("Error updating image:", error);
-    }
-  };
-
   if (status === "loading") {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -153,18 +113,10 @@ const ProfilePage = () => {
           <div className="flex items-center mb-4 relative">
             <div className="relative">
               <img
-                src={
-                  imagePreview || session.user?.image || "/default-profile.png"
-                }
+                src={session.user?.image || "/default-profile.png"}
                 alt={session.user?.name || "User Profile"}
                 className="w-28 h-28 rounded-full border-2 border-gray-300"
               />
-              <button
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-3 py-1 rounded-full hover:bg-blue-600 transition whitespace-nowrap"
-                onClick={() => setIsEditingImage(true)}
-              >
-                Edit Image
-              </button>
             </div>
 
             <div className="ml-4 flex-grow">
@@ -213,41 +165,51 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          {isEditingImage && (
-            <div className="flex flex-col items-center mt-4">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="mb-2"
-              />
-              <div className="flex space-x-2">
-                <button onClick={handleSaveImage} className="text-blue-400">
-                  Save Image
-                </button>
-                <button
-                  onClick={() => {
-                    setIsEditingImage(false);
-                    setImagePreview(session.user?.image || null);
-                  }}
-                  className="text-red-400"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Novas seções para localização e último login */}
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold text-white">User Location</h3>
+          <div className="mt-2">
+            <h3 className="text-lg font-semibold text-white">Last Login</h3>
             <p className="text-gray-300">
-              {location || "Location not available"}
+              {lastLogin
+                ? new Date(lastLogin).toLocaleString("pt-BR")
+                : "Last login not available"}
             </p>
           </div>
           <div className="mt-2">
-            <h3 className="text-lg font-semibold text-white">Last Login</h3>
-            <p className="text-gray-300">{lastLogin || "Not available"}</p>
+            <h3 className="text-lg font-semibold text-white">Created At</h3>
+            <p className="text-gray-300">
+              {createdAt || "Created at not available"}
+            </p>
+          </div>
+
+          {/* Botões condicional baseado no status da conta */}
+          <div className="mt-4 flex justify-center space-x-4">
+            {isPremium ? (
+              <>
+                <button
+                  className="bg-blue-500 text-white rounded-lg px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-600"
+                  onClick={() => router.push("/upload-multi-files")} // Botão para "Upload Multi Files"
+                >
+                  Upload Multi Files
+                </button>
+                <button
+                  className="bg-blue-500 text-white rounded-lg px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-600"
+                  onClick={() =>
+                    window.open(
+                      "https://billing.stripe.com/p/login/9AQ8xm5gn09keR2288",
+                      "_blank"
+                    )
+                  } // Mudar para a rota do dashboard
+                >
+                  Subscription Dashboard
+                </button>
+              </>
+            ) : (
+              <button
+                className="bg-blue-500 text-white rounded-lg px-4 py-2 transition duration-300 ease-in-out hover:bg-blue-600"
+                onClick={() => router.push("/upload-multi-files")}
+              >
+                Change My Account Plan
+              </button>
+            )}
           </div>
         </div>
         <LogoutButton />

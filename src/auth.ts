@@ -34,12 +34,16 @@ export const {
           name: user.name,
           email: user.email,
           image: user.image,
-          permissions: ["canAccessComponent"],  
-        }); 
+          permissions: ["canAccessComponent"],
+        });
         await newUser.save();
         console.log('Novo usuário registrado:', newUser);
       } else {
         console.log('Usuário já registrado:', existingUser);
+
+        // Atualiza o campo lastLogin para a data e hora atuais
+        existingUser.lastLogin = new Date();
+        await existingUser.save(); // Salva a atualização no banco de dados
       }
 
       return true;
