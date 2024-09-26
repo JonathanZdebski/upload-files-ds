@@ -21,19 +21,9 @@ const ProfilePage = () => {
   const { name, setName, email, setEmail } = useUserStore();
   const router = useRouter(); // Inicializar useRouter
 
-  const loadStoredUserData = () => {
-    const storedName = localStorage.getItem("userName");
-    const storedEmail = localStorage.getItem("userEmail");
-
-    if (storedName) setName(storedName);
-    if (storedEmail) setEmail(storedEmail);
-  };
-
   useEffect(() => {
     const fetchUserData = async () => {
-      if (session && session.user) {
-        loadStoredUserData();
-
+      if (session?.user) {
         try {
           const response = await fetch(`/api/user/${session.user.id}`);
           if (!response.ok) {
@@ -41,6 +31,9 @@ const ProfilePage = () => {
           }
 
           const userData = await response.json();
+          // Atualiza o estado com os dados mais recentes do banco de dados
+          setName(userData.name || session.user.name); // Define o nome
+          setEmail(userData.email || session.user.email); // Define o email
           setIsPremium(userData.hasPaid);
           setLocation(userData.location);
           setLastLogin(userData.lastLogin);
@@ -53,7 +46,7 @@ const ProfilePage = () => {
     };
 
     fetchUserData();
-  }, [session, setName, setEmail]);
+  }, [session, setName, setEmail]); // Adicionando setName e setEmail às dependências
 
   useEffect(() => {
     if (name) {
