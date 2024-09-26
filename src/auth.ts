@@ -35,7 +35,7 @@ export const {
           email: user.email,
           image: user.image,
           permissions: ["canAccessComponent"],  
-        });
+        }); 
         await newUser.save();
         console.log('Novo usuário registrado:', newUser);
       } else {
@@ -44,6 +44,14 @@ export const {
 
       return true;
     },
-  
-}});
 
+    async session({ session, user }) {
+      // Adiciona o ID do usuário à sessão
+      const currentUser = await User.findOne({ email: session.user.email });
+      if (currentUser) {
+        session.user.id = currentUser._id.toString(); // Armazena o ID do usuário na sessão
+      }
+      return session;
+    },
+  },
+});
