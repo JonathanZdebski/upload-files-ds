@@ -23,13 +23,19 @@ export const {
 
   callbacks: {
     async signIn({ user }) {
-      // Conecta ao MongoDB
-      await connectToUsersAuthenticatedDB();
+      // Conecta ao MongoDB apenas se necessário
+      if (!(globalThis as any)._mongoose) {
+        (globalThis as any)._mongoose = await connectToUsersAuthenticatedDB();
+      }
+      
+      // Uso subsequente
+      const mongoose = (globalThis as any)._mongoose;
+      
 
       // Verifica se o usuário já está registrado
       const existingUser = await User.findOne({ email: user.email });
       if (!existingUser) {
-        // Registra um novo usuário se ele não estiver registrado
+        // Registra um novo usuário
         const newUser = new User({
           name: user.name,
           email: user.email,
@@ -39,23 +45,48 @@ export const {
         await newUser.save();
         console.log('Novo usuário registrado:', newUser);
       } else {
-        console.log('Usuário já registrado:', existingUser);
-
-        // Atualiza o campo lastLogin para a data e hora atuais
-        existingUser.lastLogin = new Date();
-        await existingUser.save(); // Salva a atualização no banco de dados
+        // Atualiza apenas se necessário (evitando consultas redundantes)
+        const currentDate = new Date();
+        if (!existingUser.lastLogin || existingUser.lastLogin.getTime() !== currentDate.getTime()) {
+          existingUser.lastLogin = currentDate;
+          await existingUser.save();
+          console.log('Usuário atualizado:', existingUser);
+        } else {
+          console.log('Usuário já registrado:', existingUser);
+        }
       }
 
       return true;
     },
 
-    async session({ session, user }) {
+    async session({ session }) {
       // Adiciona o ID do usuário à sessão
-      const currentUser = await User.findOne({ email: session.user.email });
-      if (currentUser) {
-        session.user.id = currentUser._id.toString(); // Armazena o ID do usuário na sessão
+      if (!session.user.id) {
+        const currentUser = await User.findOne({ email: session.user.email });
+        if (currentUser) {
+          session.user.id = currentUser._id.toString(); // Armazena o ID do usuário na sessão
+        }
       }
+
+      // Verifica e armazena a sessão no localStorage apenas se não existir
+      if (typeof window !== 'undefined' && !localStorage.getItem('nextAuthSession')) {
+        localStorage.setItem('nextAuthSession', JSON.stringify(session));
+      }
+
       return session;
     },
+  },
+
+  events: {
+    async signOut() {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('nextAuthSession');
+      }
+    }
+  },
+
+  session: {
+    strategy: 'jwt', // Usando JWT para evitar consultas frequentes
+    maxAge: 24 * 60 * 60, // Sessão de 1 dia
   },
 });
