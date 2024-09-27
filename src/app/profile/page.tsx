@@ -151,19 +151,19 @@ const ProfilePage = () => {
       <Navbar />
       <div className="flex flex-col items-center justify-center p-6">
         <h1 className="text-2xl font-bold mb-4">My Profile</h1>
-        <div className="bg-gray-800 bg-opacity-75 shadow-md rounded-lg p-12 w-full max-w-2xl">
-          <div className="flex items-center mb-4 relative -mt-7">
+        <div className="bg-gray-800 bg-opacity-75 shadow-md rounded-lg p-6 sm:p-12 w-full max-w-2xl">
+          <div className="flex flex-col sm:flex-row items-center mb-4 relative mt-4 sm:mt-[-1.75rem]">
             <div className="relative">
               <img
                 src={session.user?.image || "/default-profile.png"}
                 alt={session.user?.name || "User Profile"}
-                className="w-16 h-16 md:w-28 md:h-28 rounded-full border-2 border-gray-300"
+                className="w-16 h-16 sm:w-28 sm:h-28 rounded-full border-2 border-gray-300"
               />
             </div>
 
-            <div className="ml-4 flex-grow">
+            <div className="mt-4 sm:mt-0 sm:ml-4 flex-grow text-center sm:text-left">
               {isEditingName ? (
-                <div className="mt-4 p-4 bg-gray-800 rounded-lg shadow-lg">
+                <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
                   <input
                     type="text"
                     value={name}
@@ -171,7 +171,7 @@ const ProfilePage = () => {
                     className="bg-gray-700 text-gray-200 rounded-lg p-3 mb-2 w-full border border-gray-600 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 transition duration-200"
                     placeholder="Name"
                   />
-                  <div className="flex space-x-4 mt-2">
+                  <div className="flex space-x-4 mt-2 justify-center sm:justify-start">
                     <button
                       onClick={handleSaveName}
                       className="bg-blue-600 hover:bg-blue-500 transition duration-300 text-white px-4 py-2 rounded shadow-md"
@@ -190,43 +190,41 @@ const ProfilePage = () => {
                   </div>
                 </div>
               ) : (
-                <>
-                  <div className=" p-6 rounded-lg shadow-md">
-                    <h2 className="text-2xl font-semibold text-white mb-1">
-                      {name}
-                    </h2>
-                    <p className="text-gray-400 mb-3">{email}</p>
+                <div className="p-6 rounded-lg shadow-md">
+                  <h2 className="text-2xl font-semibold text-white mb-1">
+                    {name}
+                  </h2>
+                  <p className="text-gray-400 mb-3">{email}</p>
 
-                    <div
-                      className={`relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium ${
-                        isPremium
-                          ? "bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white shadow-lg border-2 border-green-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                          : "bg-gray-600 text-gray-200 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                  <div
+                    className={`relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium ${
+                      isPremium
+                        ? "bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white shadow-lg border-2 border-green-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        : "bg-gray-600 text-gray-200 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                    }`}
+                  >
+                    <span
+                      className={`absolute inset-0 rounded-full ${
+                        isPremium ? "animate-glow" : "hidden"
                       }`}
-                    >
-                      <span
-                        className={`absolute inset-0 rounded-full ${
-                          isPremium ? "animate-glow" : "hidden"
-                        }`}
-                      />
-                      {isPremium ? (
-                        <MdCheckCircle className="mr-2" /> // Ícone para Premium
-                      ) : (
-                        <MdCancel className="mr-2" /> // Ícone para Free
-                      )}
-                      {isPremium ? "Premium Account" : "Free Account"}
-                    </div>
-
-                    <div className="mt-4">
-                      <button
-                        className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow flex items-center"
-                        onClick={() => setIsEditingName(true)}
-                      >
-                        <MdEdit className="mr-1 text-sm" /> Edit Name
-                      </button>
-                    </div>
+                    />
+                    {isPremium ? (
+                      <MdCheckCircle className="mr-2" /> // Ícone para Premium
+                    ) : (
+                      <MdCancel className="mr-2" /> // Ícone para Free
+                    )}
+                    {isPremium ? "Premium Account" : "Free Account"}
                   </div>
-                </>
+
+                  <div className="mt-4 flex justify-center sm:justify-start">
+                    <button
+                      className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow flex items-center"
+                      onClick={() => setIsEditingName(true)}
+                    >
+                      <MdEdit className="mr-1 text-sm" /> Edit Name
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
           </div>
@@ -320,7 +318,7 @@ const ProfilePage = () => {
                 </p>
               </div>
               <button
-                className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow mt-4 flex items-center"
+                className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow mt-4 flex items-center mx-auto sm:mx-0"
                 onClick={() => setIsEditingInfo(true)}
               >
                 <MdEdit className="mr-1 text-sm" /> Edit Info
@@ -368,17 +366,17 @@ const ProfilePage = () => {
             {isPremium ? (
               <>
                 <button
-                  className="relative inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
+                  className="relative inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
                   onClick={() => router.push("/upload-multi-files")}
                 >
-                  <span className="font-semibold text-lg tracking-wider">
+                  <span className="font-semibold text-base sm:text-lg tracking-wider">
                     Upload Multi Files
                   </span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 opacity-30 blur-md" />
                   <div className="absolute inset-0 rounded-lg border-2 border-white opacity-20" />
                 </button>
                 <button
-                  className="relative inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
+                  className="relative inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
                   onClick={() =>
                     window.open(
                       "https://billing.stripe.com/p/login/9AQ8xm5gn09keR2288",
@@ -386,7 +384,7 @@ const ProfilePage = () => {
                     )
                   }
                 >
-                  <span className="font-semibold text-lg tracking-wider">
+                  <span className="font-semibold text-base sm:text-lg tracking-wider">
                     Subscription Dashboard
                   </span>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 opacity-30 blur-md" />
@@ -409,8 +407,8 @@ const ProfilePage = () => {
         </div>
 
         <LogoutButton />
+        <Content />
       </div>
-      <Content />
       <Footer />
     </>
   );
