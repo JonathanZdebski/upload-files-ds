@@ -9,6 +9,7 @@ import { useUserStore } from "../Components/useUserStore";
 import PageTitle from "../Components/PageTitle";
 import { useRouter } from "next/navigation";
 import Content from "../Components/Content";
+import { MdCheckCircle, MdCancel, MdEdit } from "react-icons/md";
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
@@ -151,7 +152,7 @@ const ProfilePage = () => {
       <div className="flex flex-col items-center justify-center p-6">
         <h1 className="text-2xl font-bold mb-4">My Profile</h1>
         <div className="bg-gray-800 bg-opacity-75 shadow-md rounded-lg p-12 w-full max-w-2xl">
-          <div className="flex items-center mb-4 relative">
+          <div className="flex items-center mb-4 relative -mt-7">
             <div className="relative">
               <img
                 src={session.user?.image || "/default-profile.png"}
@@ -162,12 +163,12 @@ const ProfilePage = () => {
 
             <div className="ml-4 flex-grow">
               {isEditingName ? (
-                <div>
+                <div className="mt-4 p-4 bg-gray-800 rounded-lg shadow-lg">
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-gray-700 text-white rounded p-1 mb-2 w-full"
+                    className="bg-gray-700 text-gray-200 rounded-lg p-3 mb-2 w-full border border-gray-600 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 transition duration-200"
                     placeholder="Name"
                   />
                   <div className="flex space-x-4 mt-2">
@@ -190,17 +191,41 @@ const ProfilePage = () => {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-xl text-white">{name}</h2>
-                  <p className="text-gray-300">{email}</p>
-                  <p className="text-green-400">
-                    {isPremium ? "Premium Account" : "Free Account"}
-                  </p>
-                  <button
-                    className="text-blue-400 hover:text-blue-300 transition duration-300"
-                    onClick={() => setIsEditingName(true)}
-                  >
-                    Edit Name
-                  </button>
+                  <div className=" p-6 rounded-lg shadow-md">
+                    <h2 className="text-2xl font-semibold text-white mb-1">
+                      {name}
+                    </h2>
+                    <p className="text-gray-400 mb-3">{email}</p>
+
+                    <div
+                      className={`relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium ${
+                        isPremium
+                          ? "bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white shadow-lg border-2 border-green-300 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                          : "bg-gray-600 text-gray-200 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                      }`}
+                    >
+                      <span
+                        className={`absolute inset-0 rounded-full ${
+                          isPremium ? "animate-glow" : "hidden"
+                        }`}
+                      />
+                      {isPremium ? (
+                        <MdCheckCircle className="mr-2" /> // Ícone para Premium
+                      ) : (
+                        <MdCancel className="mr-2" /> // Ícone para Free
+                      )}
+                      {isPremium ? "Premium Account" : "Free Account"}
+                    </div>
+
+                    <div className="mt-4">
+                      <button
+                        className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow flex items-center"
+                        onClick={() => setIsEditingName(true)}
+                      >
+                        <MdEdit className="mr-1 text-sm" /> Edit Name
+                      </button>
+                    </div>
+                  </div>
                 </>
               )}
             </div>
@@ -209,58 +234,60 @@ const ProfilePage = () => {
           {isEditingInfo ? (
             <>
               {/* Campos editáveis */}
-              <div className="mt-2">
-                <label className="text-lg font-semibold text-white">
-                  Birth Date
-                </label>
-                <input
-                  type="date"
-                  value={birthDate || ""}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className="bg-gray-700 text-white rounded p-1 w-full"
-                />
-              </div>
-              <div className="mt-2">
-                <label className="text-lg font-semibold text-white">
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  value={phoneNumber || ""}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="bg-gray-700 text-white rounded p-1 w-full"
-                />
-              </div>
-              <div className="mt-2">
-                <label className="text-lg font-semibold text-white">
-                  Gender
-                </label>
-                <select
-                  value={gender || ""}
-                  onChange={(e) => setGender(e.target.value)}
-                  className="bg-gray-700 text-white rounded p-1 w-full"
-                >
-                  <option value="" disabled>
-                    Select Gender
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div className="mt-4 flex space-x-4">
-                <button
-                  onClick={handleSaveInfo}
-                  className="bg-blue-600 hover:bg-blue-500 transition duration-300 text-white px-4 py-2 rounded shadow-md"
-                >
-                  Save Info
-                </button>
-                <button
-                  onClick={() => setIsEditingInfo(false)}
-                  className="bg-red-600 hover:bg-red-500 transition duration-300 text-white px-4 py-2 rounded shadow-md"
-                >
-                  Cancel
-                </button>
+              <div className="mt-4 p-4 bg-gray-800 rounded-lg shadow-lg">
+                <div className="mt-2">
+                  <label className="text-lg font-semibold text-gray-200">
+                    Birth Date
+                  </label>
+                  <input
+                    type="date"
+                    value={birthDate || ""}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                    className="bg-gray-700 text-gray-200 rounded-lg p-3 w-full border border-gray-600 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 transition duration-200"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="text-lg font-semibold text-gray-200">
+                    Phone Number
+                  </label>
+                  <input
+                    type="text"
+                    value={phoneNumber || ""}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="bg-gray-700 text-gray-200 rounded-lg p-3 w-full border border-gray-600 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 transition duration-200"
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="text-lg font-semibold text-gray-200">
+                    Gender
+                  </label>
+                  <select
+                    value={gender || ""}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="bg-gray-700 text-gray-200 rounded-lg p-3 w-full border border-gray-600 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 transition duration-200"
+                  >
+                    <option value="" disabled>
+                      Select Gender
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div className="mt-6 flex space-x-4">
+                  <button
+                    onClick={handleSaveInfo}
+                    className="bg-blue-600 hover:bg-blue-500 transition duration-300 text-white px-4 py-2 rounded-lg shadow-md"
+                  >
+                    Save Info
+                  </button>
+                  <button
+                    onClick={() => setIsEditingInfo(false)}
+                    className="bg-red-600 hover:bg-red-500 transition duration-300 text-white px-4 py-2 rounded-lg shadow-md"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
 
               {/* Linha de separação */}
@@ -268,22 +295,24 @@ const ProfilePage = () => {
             </>
           ) : (
             <>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold text-white">Birth Date</h3>
+              <div className="mt-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+                <h3 className="text-lg font-semibold text-gray-200">
+                  Birth Date
+                </h3>
                 <p className="text-gray-300">
                   {birthDate
                     ? new Date(birthDate).toLocaleDateString("pt-BR")
                     : "Not provided"}
                 </p>
               </div>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold text-white">
+              <div className="mt-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+                <h3 className="text-lg font-semibold text-gray-200">
                   Phone Number
                 </h3>
                 <p className="text-gray-300">{phoneNumber || "Not provided"}</p>
               </div>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold text-white">Gender</h3>
+              <div className="mt-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+                <h3 className="text-lg font-semibold text-gray-200">Gender</h3>
                 <p className="text-gray-300">
                   {gender
                     ? gender.charAt(0).toUpperCase() + gender.slice(1)
@@ -291,34 +320,65 @@ const ProfilePage = () => {
                 </p>
               </div>
               <button
-                className="text-blue-400 mt-2 hover:text-blue-300 transition duration-300"
+                className="bg-blue-500 hover:bg-blue-600 transition duration-300 text-white font-semibold py-1 px-2 rounded-md shadow mt-4 flex items-center"
                 onClick={() => setIsEditingInfo(true)}
               >
-                Edit Info
+                <MdEdit className="mr-1 text-sm" /> Edit Info
               </button>
             </>
           )}
+
           <hr className="my-4 border-gray-600" />
-          <div className="mt-2">
-            <h3 className="text-lg font-semibold text-white">Last Login</h3>
-            <p className="text-gray-300">{lastLogin || "Not available"}</p>
-          </div>
-          <div className="mt-2">
-            <h3 className="text-lg font-semibold text-white">Created At</h3>
-            <p className="text-gray-300">{createdAt || "Not available"}</p>
+
+          <div className="mt-4 bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="flex flex-col space-y-4">
+              {/* Last Login Section */}
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-white">Last Login</h3>
+                <span
+                  className={`text-xs font-medium ${
+                    lastLogin ? "text-green-500" : "text-red-500"
+                  }`}
+                >
+                  {lastLogin ? "Active" : "Inactive"}
+                </span>
+              </div>
+              <p className="text-gray-300 bg-gray-900 rounded-lg p-4 transition-transform transform hover:scale-105 hover:shadow-md">
+                {lastLogin || "Not available"}
+              </p>
+
+              {/* Created At Section */}
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold text-white">Created At</h3>
+                <span
+                  className={`text-xs font-medium ${
+                    createdAt ? "text-green-500" : "text-red-500"
+                  }`}
+                >
+                  {createdAt ? "Active" : "Inactive"}
+                </span>
+              </div>
+              <p className="text-gray-300 bg-gray-900 rounded-lg p-4 transition-transform transform hover:scale-105 hover:shadow-md">
+                {createdAt || "Not available"}
+              </p>
+            </div>
           </div>
 
           <div className="mt-4 flex justify-center space-x-4">
             {isPremium ? (
               <>
                 <button
-                  className="bg-blue-500 text-white rounded-lg px-6 py-3 transition-all duration-300 ease-in-out transform hover:bg-blue-600 hover:shadow-lg hover:scale-105"
+                  className="relative inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
                   onClick={() => router.push("/upload-multi-files")}
                 >
-                  <span className="font-semibold">Upload Multi Files</span>
+                  <span className="font-semibold text-lg tracking-wider">
+                    Upload Multi Files
+                  </span>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 opacity-30 blur-md" />
+                  <div className="absolute inset-0 rounded-lg border-2 border-white opacity-20" />
                 </button>
                 <button
-                  className="bg-blue-500 text-white rounded-lg px-6 py-3 transition-all duration-300 ease-in-out transform hover:bg-blue-600 hover:shadow-lg hover:scale-105"
+                  className="relative inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 active:scale-95"
                   onClick={() =>
                     window.open(
                       "https://billing.stripe.com/p/login/9AQ8xm5gn09keR2288",
@@ -326,15 +386,23 @@ const ProfilePage = () => {
                     )
                   }
                 >
-                  <span className="font-semibold">Subscription Dashboard</span>
+                  <span className="font-semibold text-lg tracking-wider">
+                    Subscription Dashboard
+                  </span>
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 opacity-30 blur-md" />
+                  <div className="absolute inset-0 rounded-lg border-2 border-white opacity-20" />
                 </button>
               </>
             ) : (
               <button
-                className="bg-yellow-600 text-white rounded-lg px-6 py-3 transition-all duration-300 ease-in-out transform hover:bg-yellow-500 hover:shadow-lg hover:scale-105"
+                className="relative inline-flex items-center px-6 py-3 text-white rounded-lg bg-gradient-to-r from-orange-500 to-red-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400 active:scale-95"
                 onClick={() => router.push("/upload-multi-files")}
               >
-                <span className="font-semibold">Change My Account Plan</span>
+                <span className="font-semibold text-lg tracking-wider">
+                  Change My Account Plan
+                </span>
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-orange-400 to-red-500 opacity-30 blur-md" />
+                <div className="absolute inset-0 rounded-lg border-2 border-white opacity-20" />
               </button>
             )}
           </div>

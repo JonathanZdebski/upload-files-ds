@@ -28,10 +28,7 @@ export const {
         (globalThis as any)._mongoose = await connectToUsersAuthenticatedDB();
       }
       
-
       const mongoose = (globalThis as any)._mongoose;
-      
-
 
       const existingUser = await User.findOne({ email: user.email });
       if (!existingUser) {

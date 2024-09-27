@@ -202,7 +202,7 @@ text-align: center;
 }
 
 .titleContainerOne:hover{
-  background-color: rgba(240, 248, 255, 0.103);
+
   border-radius: 5px;
   transition: 0.2s ease-in-out;
 }
