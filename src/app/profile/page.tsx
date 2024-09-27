@@ -43,7 +43,19 @@ const ProfilePage = () => {
           setIsPremium(userData.hasPaid);
           setLocation(userData.location);
           setLastLogin(new Date(userData.lastLogin).toLocaleString("en-US"));
-          setBirthDate(new Date(userData.birthDate).toLocaleString("en-US"));
+
+          const birthDateObject = new Date(userData.birthDate);
+          const adjustedBirthDate = new Date(
+            Date.UTC(
+              birthDateObject.getUTCFullYear(),
+              birthDateObject.getUTCMonth(),
+              birthDateObject.getUTCDate()
+            )
+          );
+          setBirthDate(
+            adjustedBirthDate.toLocaleString("en-US", { timeZone: "UTC" })
+          );
+
           setPhoneNumber(userData.phoneNumber);
           setGender(userData.gender);
           setCreatedAt(new Date(userData.createdAt).toLocaleString("en-US"));
@@ -144,7 +156,7 @@ const ProfilePage = () => {
               <img
                 src={session.user?.image || "/default-profile.png"}
                 alt={session.user?.name || "User Profile"}
-                className="w-28 h-28 rounded-full border-2 border-gray-300"
+                className="w-16 h-16 md:w-28 md:h-28 rounded-full border-2 border-gray-300"
               />
             </div>
 

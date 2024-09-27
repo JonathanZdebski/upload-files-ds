@@ -23,19 +23,19 @@ export const {
 
   callbacks: {
     async signIn({ user }) {
-      // Conecta ao MongoDB apenas se necessário
+
       if (!(globalThis as any)._mongoose) {
         (globalThis as any)._mongoose = await connectToUsersAuthenticatedDB();
       }
       
-      // Uso subsequente
+
       const mongoose = (globalThis as any)._mongoose;
       
 
-      // Verifica se o usuário já está registrado
+
       const existingUser = await User.findOne({ email: user.email });
       if (!existingUser) {
-        // Registra um novo usuário
+
         const newUser = new User({
           name: user.name,
           email: user.email,
@@ -45,7 +45,7 @@ export const {
         await newUser.save();
         console.log('Novo usuário registrado:', newUser);
       } else {
-        // Atualiza apenas se necessário (evitando consultas redundantes)
+
         const currentDate = new Date();
         if (!existingUser.lastLogin || existingUser.lastLogin.getTime() !== currentDate.getTime()) {
           existingUser.lastLogin = currentDate;
@@ -60,7 +60,7 @@ export const {
     },
 
     async session({ session }) {
-      // Adiciona o ID do usuário à sessão
+
       if (!session.user.id) {
         const currentUser = await User.findOne({ email: session.user.email });
         if (currentUser) {
@@ -68,7 +68,6 @@ export const {
         }
       }
 
-      // Verifica e armazena a sessão no localStorage apenas se não existir
       if (typeof window !== 'undefined' && !localStorage.getItem('nextAuthSession')) {
         localStorage.setItem('nextAuthSession', JSON.stringify(session));
       }
@@ -86,7 +85,7 @@ export const {
   },
 
   session: {
-    strategy: 'jwt', // Usando JWT para evitar consultas frequentes
-    maxAge: 24 * 60 * 60, // Sessão de 1 dia
+    strategy: 'jwt', 
+    maxAge: 24 * 60 * 60, 
   },
 });

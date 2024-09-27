@@ -4,6 +4,7 @@ import Header from "../../app/Components/ui/ProfilePicture";
 import { Popover } from "@/components/ui/popover";
 import { useSession } from "next-auth/react";
 import { FaCog } from "react-icons/fa";
+import { BiBadge, BiUser } from "react-icons/bi"; // Ícones para status da conta
 
 type UserData = {
   name: string;
@@ -14,11 +15,6 @@ type UserData = {
   createdAt?: string;
   updatedAt?: string;
 };
-
-interface PopoverProps {
-  className?: string;
-  // ... outras propriedades
-}
 
 const PopoverProfile = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -48,6 +44,16 @@ const PopoverProfile = () => {
     return null;
   }
 
+  const accountType = userData?.hasPaid ? "Premium" : "Free";
+  const accountTypeClass = userData?.hasPaid
+    ? "bg-blue-100 text-blue-600"
+    : "bg-gray-100 text-gray-600";
+  const accountIcon = userData?.hasPaid ? (
+    <BiBadge className="inline mr-1" />
+  ) : (
+    <BiUser className="inline mr-1" />
+  );
+
   return (
     <div className="">
       <Popover>
@@ -55,8 +61,8 @@ const PopoverProfile = () => {
           <span className="mr-2">
             <Header />
           </span>
-          <span className="font-semibold text-gray-800 text-lg">
-            Hello, {userData?.name || session.user?.name}
+          <span className="font-semibold text-gray-800 text-sm md:text-base">
+            Welcome, {userData?.name || session.user?.name}
           </span>
         </div>
 
@@ -66,13 +72,10 @@ const PopoverProfile = () => {
           <p className="text-gray-600 text-sm mb-4">
             {userData?.email || session.user?.email}
           </p>
-          {/* Linha visível abaixo do email */}
           <div className="border-b border-gray-300 mb-2"></div>
         </div>
 
         <div className="flex items-center p-4 border-b border-gray-300 -mt-6">
-          {" "}
-          {/* Margem negativa aplicada aqui */}
           <FaCog className="mr-2 text-xl text-gray-600 hover:text-blue-600 transition duration-200" />
           <a
             href="/profile"
@@ -82,8 +85,19 @@ const PopoverProfile = () => {
           </a>
         </div>
 
-        <div className="flex justify-center p-4">
-          <button className=" text-white font-semibold -py-2 px-4 rounded-md  transition duration-200">
+        <div className="flex justify-center items-center p-4">
+          <div
+            className={`flex items-center p-3 rounded-md ${accountTypeClass} -mb-5 transition duration-200 hover:shadow-lg`}
+          >
+            {accountIcon}
+            <span className="font-medium text-sm">
+              Account Type: <strong>{accountType}</strong>
+            </span>
+          </div>
+        </div>
+
+        <div className="flex justify-center p-2">
+          <button className=" text-white font-semibold py-2 px-2 rounded-md transition duration-200">
             <LogoutButton />
           </button>
         </div>
